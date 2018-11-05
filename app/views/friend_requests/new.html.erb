@@ -1,0 +1,11 @@
+<h1>[임시] 친구 요청을 보내는 페이지</h1>
+<div style="color: red;">
+*친구 페이지에서 친구 요청을 보낼 수 있게 고쳐야 함	
+</div>
+
+<% for user in User.where.not(id: current_user.id) %>
+  <p>
+    <strong><%= user.email %></strong>
+    <%= link_to "친구요청 보내기", friend_requests_path(friend_id: user.id), :method => :post %>
+  </p>
+<% end %>

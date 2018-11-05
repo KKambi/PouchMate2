@@ -64,3 +64,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # 회원가입
 gem 'devise'
+
+# 환경변수관리
+gem 'figaro'

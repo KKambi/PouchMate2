@@ -1,15 +1,19 @@
 class CosmeticsController < ApplicationController
   before_action :set_cosmetic, only: [:show, :edit, :update, :destroy]
 
-  # GET /cosmetics/users/1
-  # GET /cosmetics/users/1.json
-  def index
-      @cosmetics = Cosmetic.where("user_id = ?", params[:user_id])
+  # GET /cosmetics
+  def main
   end
 
-  # GET /cosmetics/1
-  # GET /cosmetics/1.json
-  def show
+  # GET /cosmetics/tables/1
+  # GET /cosmetics/tables/1.json
+  def table
+    @owner_user_id = params[:user_id]
+    @cosmetics = Cosmetic.where("user_id = ?", @owner_user_id)
+  end
+
+  # GET /cosmetics/mypage
+  def mypage
   end
 
   # GET /cosmetics/new

@@ -1,6 +1,7 @@
 <h1>
-  ID <%= current_user.id %> 번 님의 화장대입니다.
+  ID <%= @owner_user_id %> 번의 화장대 페이지
 </h1>
+
 
 <table>
   <thead>
@@ -35,3 +36,5 @@
 <br>
 
 <%= link_to 'New Cosmetic', new_cosmetic_path %>
+
+
