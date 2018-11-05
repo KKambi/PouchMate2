@@ -1,0 +1,47 @@
+<%= form_with(model: cosmetic, local: true) do |form| %>
+  <% if cosmetic.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(cosmetic.errors.count, "error") %> prohibited this cosmetic from being saved:</h2>
+
+      <ul>
+      <% cosmetic.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :memo %>
+    <%= form.text_field :memo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category %>
+    <%= form.text_field :category %>
+  </div>
+
+  <div class="field">
+    <%= form.label :exp_date %>
+    <%= form.date_select :exp_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.number_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :carousel %>
+    <%= form.number_field :carousel %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

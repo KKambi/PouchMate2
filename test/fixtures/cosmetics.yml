@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  memo: MyString
+  category: MyString
+  exp_date: 2018-11-04
+  user_id: 1
+  carousel: 1
+
+two:
+  title: MyString
+  memo: MyString
+  category: MyString
+  exp_date: 2018-11-04
+  user_id: 1
+  carousel: 1

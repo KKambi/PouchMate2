@@ -1,0 +1,16 @@
+<h2>비밀번호 찾기</h2>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :이메일 %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "확인 이메일 보내기" %>
+  </div>
+<% end %>
+
+<%= link_to '뒤로가기', new_user_session_path %>

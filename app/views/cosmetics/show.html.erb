@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @cosmetic.title %>
+</p>
+
+<p>
+  <strong>Memo:</strong>
+  <%= @cosmetic.memo %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @cosmetic.category %>
+</p>
+
+<p>
+  <strong>Exp date:</strong>
+  <%= @cosmetic.exp_date %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @cosmetic.user_id %>
+</p>
+
+<p>
+  <strong>Carousel:</strong>
+  <%= @cosmetic.carousel %>
+</p>
+
+<%= link_to 'Edit', edit_cosmetic_path(@cosmetic) %> |
+<%= link_to 'Back', cosmetics_path %>

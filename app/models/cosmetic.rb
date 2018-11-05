@@ -1,0 +1,2 @@
+class Cosmetic < ApplicationRecord
+end

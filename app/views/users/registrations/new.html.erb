@@ -1,0 +1,61 @@
+<h2>회원가입</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :이메일 %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"닉네임" %><br />
+    <%= f.text_field :nickname, autofocus: true, :required => true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"프로필 사진" %>
+    <%= f.file_field :profile_img %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"나이" %>
+    <%= f.select :age, options_for_select(10..99), :required => true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"성별" %>
+    <%= f.radio_button(:gender, "남자", :checked => true) %>
+    <%= label_tag(:gender, "남자") %>
+    <%= f.radio_button(:gender, "여자") %>
+    <%= label_tag(:gender, "여자") %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"한줄소개" %>
+    <%= f.text_field :self_intro %>
+  </div>
+
+  <div class="field">
+    <%= f.label :비밀번호 %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %>자이상)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :비밀번호확인 %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div>
+    <%= f.hidden_field :admin %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "회원가입" %>
+  </div>
+<% end %>
+
+<%= link_to '뒤로가기', new_user_session_path %>
