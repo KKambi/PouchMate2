@@ -3,12 +3,6 @@ class FriendRequestsController < ApplicationController
 	before_action :set_friend_request, only: [:show, :edit, :update, :destroy]
 
 
-
-	def index
-	  @incomings = FriendRequest.where(friend: current_user)
-	  @outgoings = current_user.friend_requests
-	end
-
 	def new
 	end
 
@@ -25,12 +19,6 @@ class FriendRequestsController < ApplicationController
         format.json { render json: @friend_request.errors, status: :unprocessable_entity }
       end
     end
-  end
-
-  def show
-  end
-
-  def edit
   end
 
   def update

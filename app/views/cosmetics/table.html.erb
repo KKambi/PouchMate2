@@ -1,5 +1,5 @@
 <h1>
-  ID <%= current_user.id %> 번 님의 화장대입니다.
+  ID <%= @owner_user_id %> 번의 화장대 페이지
 </h1>
 
 
@@ -38,14 +38,3 @@
 <%= link_to 'New Cosmetic', new_cosmetic_path %>
 
 
-<!--한비_Footer에 들어갈 링크-->
-<div style="margin-top: 30px; margin-bottom: 30px; color:red;">
-  한비_Footer링크
-  1. 홈
-  2. 등록하기
-  <%= link_to friends_index_path do %>
-  3. 친구관리로 이동하기
-  <% end %>
-  4. 검색(?)
-  5. 마이페이지(?)
-</div>
