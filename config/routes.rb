@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   # 유저 라우팅
   devise_for :users
 
@@ -17,7 +18,7 @@ Rails.application.routes.draw do
 
   # 친구 요청 관리 라우팅
   resources :friend_requests, except: [:index, :show, :edit]
-  
+
   # 친구 관리 라우팅
   get 'friends/index'
   delete 'friends/destroy/:id' => 'friends#destroy', :as => 'friends_destroy'
