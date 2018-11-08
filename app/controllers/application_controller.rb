@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 	# 로그인하지 않으면 다른 액션 들어가지 못하게 하는 코드
-	before_action :authenticate_user!
+	# before_action :authenticate_user!
 
 
 

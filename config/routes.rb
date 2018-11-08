@@ -1,20 +1,28 @@
 Rails.application.routes.draw do
 
-	# 메인화면 루트 라우팅
-  root 'cosmetics#main' 
+
+  # 유저 라우팅
+  devise_for :users
+
+  devise_scope :user do
+    authenticated :user do
+      root 'cosmetics#mypage'
+    end
+
+    unauthenticated do
+      root 'devise/sessions#new', as: :unauthenticated_root
+    end
+  end
   
 
 
   # 친구 요청 관리 라우팅
   resources :friend_requests, except: [:index, :show, :edit]
-  
+
   # 친구 관리 라우팅
   get 'friends/index'
   delete 'friends/destroy/:id' => 'friends#destroy', :as => 'friends_destroy'
 
-
-  # 유저 라우팅
-  devise_for :users
 
 
 
@@ -22,6 +30,9 @@ Rails.application.routes.draw do
 	resources :cosmetics, except: [:index] do
     collection do
       get 'mypage'
+      get 'search'
+      get 'search_result'
+      get 'feed'
     end 
   end
 

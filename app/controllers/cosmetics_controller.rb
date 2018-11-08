@@ -1,8 +1,10 @@
 class CosmeticsController < ApplicationController
   before_action :set_cosmetic, only: [:show, :edit, :update, :destroy]
 
+
   # GET /cosmetics
-  def main
+  def mypage
+    @cosmetics = Cosmetic.where("user_id = ?", current_user.id)
   end
 
   # GET /cosmetics/tables/1
@@ -10,10 +12,6 @@ class CosmeticsController < ApplicationController
   def table
     @owner_user_id = params[:user_id]
     @cosmetics = Cosmetic.where("user_id = ?", @owner_user_id)
-  end
-
-  # GET /cosmetics/mypage
-  def mypage
   end
 
   # GET /cosmetics/new

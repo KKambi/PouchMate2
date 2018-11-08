@@ -26,21 +26,18 @@
       한비_Footer링크
       
       <div class="footer" style="display:flex; flex-direction: column;">
-      <%= link_to root_path do %>
-        1. 홈
+      <%= link_to mypage_cosmetics_path do %>
+        1. 홈(마이페이지)
       <% end %>
-      
-      2. 화장품 등록하기(?)
+
+      <%= link_to search_cosmetics_path do %>
+        2. 추천(검색)
+      <% end %> 
       
       <%= link_to friends_index_path do %>
         3. 친구관리로 이동하기
       <% end %>
-      
-      4. 검색(?)
-      
-      <%= link_to mypage_cosmetics_path do %>
-        5. 마이페이지
-      <% end %>
+
 
       </div>
     </div>
