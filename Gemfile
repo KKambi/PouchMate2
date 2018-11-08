@@ -62,8 +62,16 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
+
+
+
+
 # 회원가입
 gem 'devise'
 
 # 환경변수관리
 gem 'figaro'
+
+# 이미지등록 (커리어웨이브 & 미니매직)
+gem 'carrierwave'
+gem 'mini_magick'

@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2018_11_05_065927) do
     t.string "nickname"
     t.integer "age"
     t.boolean "gender"
-    t.boolean "admin"
+    t.boolean "admin", default: false
     t.string "self_intro"
     t.string "profile_img"
     t.index ["email"], name: "index_users_on_email", unique: true

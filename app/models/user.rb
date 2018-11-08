@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
 
+  # 프로필 사진 업로드할 수 있도록
+  mount_uploader :profile_img, ProfileImgUploader
 
 
   # 친구신청 관련 N:N
