@@ -1,43 +1,77 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>개인정보수정 <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <div>이메일 인증을 완료해주세요 : <%= resource.unconfirmed_email %></div>
   <% end %>
 
+
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    이메일
+    <%= current_user.email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"닉네임" %><br />
+    <%= f.text_field :nickname, autofocus: true, :required => true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"프로필 사진" %>
+    
+    <!-- 기본이미지 장착하면 상관업따~ -->
+    <img src="<%#= current_user.profile_img.thumb.url %>" id='regis_image'/>
+    
+    <%= f.file_field :profile_img %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"나이" %>
+    <%= f.select :age, options_for_select(10..99), :required => true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"성별" %>
+    <%= f.radio_button(:gender, "남자", :checked => true) %>
+    <%= label_tag(:gender, "남자") %>
+    <%= f.radio_button(:gender, "여자") %>
+    <%= label_tag(:gender, "여자") %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"한줄소개" %>
+    <%= f.text_field :self_intro %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :비밀번호 %> (공백으로 놔두면 변경되지 않습니다)<br />
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
       <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+      <em><%= @minimum_password_length %>자 이상</em>
     <% end %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :비밀번호확인 %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
+    <%= f.label :"현재 비밀번호" %> (정보 수정을 위해 현재 비밀번호가 필요합니다)<br />
+    <%= f.password_field :current_pssword, autocomplete: "current-password" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "수정" %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p> <%= button_to "회원탈퇴", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-<%= link_to "Back", :back %>
+<%= link_to "뒤로", :back %>

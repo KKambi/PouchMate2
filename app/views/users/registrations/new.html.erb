@@ -5,12 +5,12 @@
 
   <div class="field">
     <%= f.label :이메일 %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", :required => true %>
   </div>
 
   <div class="field">
     <%= f.label :"닉네임" %><br />
-    <%= f.text_field :nickname, autofocus: true, :required => true %>
+    <%= f.text_field :nickname, autofocus: true, :required => true, :required => true %>
   </div>
 
   <div class="field">
@@ -46,7 +46,7 @@
 
   <div class="field">
     <%= f.label :비밀번호확인 %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", :required => true %>
   </div>
 
   <div>
