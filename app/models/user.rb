@@ -5,7 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
 
-
+  #코멘트 관련 1:n 다은
+  has_many :comments, dependent: :destroy
 
   # 친구신청 관련 N:N
   has_many :friend_requests, dependent: :destroy

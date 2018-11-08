@@ -36,5 +36,9 @@ Rails.application.routes.draw do
     end 
   end
 
+  #댓글 라우팅 다은
+  post '/cosmetics/:user_id/comment/create' => 'cosmetics#commentcreate', as: 'index_comment'
+ 
+
   get '/cosmetics/tables/:user_id' => 'cosmetics#table', as: 'table_cosmetic'
 end
