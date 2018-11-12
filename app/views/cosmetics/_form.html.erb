@@ -1,3 +1,4 @@
+
 <%= form_with(model: cosmetic, local: true) do |form| %>
   <% if cosmetic.errors.any? %>
     <div id="error_explanation">
@@ -12,28 +13,31 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.label :'이름' %>
+    <%= form.text_field :title, :required => true %>
   </div>
 
   <div class="field">
-    <%= form.label :memo %>
-    <%= form.text_field :memo %>
+    <%= form.label :'메모' %>
+    <%= form.text_field :title%>
   </div>
 
   <div class="field">
-    <%= form.label :category %>
-    <%= form.text_field :category %>
+    <div id="big-category">
+      <%= form.label :'종류' %></br>
+      <%= form.collection_select :category, Category.roots, 'id', 'name', {:prompt => "대분류"}, {:id => 'big-select', :required => true} %>
+    </div>
+
+    <div id="middle-category">
+    </div>
+
+    <div id="small-category">
+    </div>
   </div>
 
   <div class="field">
-    <%= form.label :exp_date %>
-    <%= form.date_select :exp_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id %>
+    <%= form.label :'사용기한' %>
+    <%= form.date_field :exp_date %>
   </div>
 
   <div class="field">
@@ -41,7 +45,12 @@
     <%= form.number_field :carousel %>
   </div>
 
+  <!-- user_id를 전달하기 위한 hidden_field -->
+  <%= form.hidden_field :user_id, value: current_user.id %> 
+
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit '등록' %>
   </div>
 <% end %>
+
+<%= javascript_include_tag('cosmetic_new') %>

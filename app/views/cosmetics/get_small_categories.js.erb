@@ -1,0 +1,6 @@
+<% if @small_categories.blank? %>
+	$('#small-select').attr('disabled', true);
+	$('#small-select').hide();
+<% else %>
+	$('#small-category').html("<%= j collection_select(:post, :category, @small_categories, :id, :name, {prompt: '소분류'}, {:id => 'small-select', :required => true}) %>");
+<% end %>

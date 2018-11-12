@@ -28,6 +28,18 @@
         <td><%= link_to 'Show', cosmetic %></td>
         <td><%= link_to 'Edit', edit_cosmetic_path(cosmetic) %></td>
         <td><%= link_to 'Destroy', cosmetic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <td>
+        <% if current_user.is_best?(cosmetic) %>
+          <%= link_to toggle_bests_path(cosmetic.id), method: :post do %>
+            [임시]인생템 취소
+          <% end %>
+        <% else %>
+          <%= link_to toggle_bests_path(cosmetic.id), method: :post do %>
+            [임시]인생템 설정
+          <% end %>
+        <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -50,4 +62,15 @@
 
 
 <%= link_to 'New Cosmetic', new_cosmetic_path %>
+
+<div class="test">
+  <h3>
+    [임시] 인생템 목록
+  </h3>
+  <% @bests.each do |best_row| %>
+    <div>
+      <%= best_row.cosmetic.title %>
+    </div>
+  <% end %>
+</div>
 

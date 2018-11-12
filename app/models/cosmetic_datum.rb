@@ -1,0 +1,2 @@
+class CosmeticDatum < ApplicationRecord
+end

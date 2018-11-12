@@ -4,8 +4,12 @@ class CosmeticsController < ApplicationController
 
   # GET /cosmetics
   def mypage
+    @user = current_user
     @cosmetics = Cosmetic.where("user_id = ?", current_user.id)
+
     @user = User.find(current_user.id)
+    @bests = current_user.bests.all
+
   end
 
   # GET /cosmetics/tables/1
@@ -19,6 +23,14 @@ class CosmeticsController < ApplicationController
   # GET /cosmetics/new
   def new
     @cosmetic = Cosmetic.new
+  end
+
+  def get_middle_categories
+    @middle_categories = Category.find(params[:category_id]).children
+  end
+
+  def get_small_categories
+    @small_categories = Category.find(params[:category_id]).children
   end
 
   # GET /cosmetics/1/edit

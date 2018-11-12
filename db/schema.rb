@@ -18,6 +18,32 @@ ActiveRecord::Schema.define(version: 2018_11_08_111626) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+
+ActiveRecord::Schema.define(version: 2018_11_11_080529) do
+
+  create_table "bests", force: :cascade do |t|
+    t.integer "cosmetic_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cosmetic_id"], name: "index_bests_on_cosmetic_id"
+    t.index ["user_id"], name: "index_bests_on_user_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
+  end
+
+  create_table "cosmetic_data", force: :cascade do |t|
+    t.string "name"
+    t.string "cosmetic_image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+
   end
 
   create_table "cosmetics", force: :cascade do |t|

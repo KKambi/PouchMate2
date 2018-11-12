@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+
   # 유저 라우팅
   devise_for :users
 
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
   
 
 
+
   # 친구 요청 관리 라우팅
   resources :friend_requests, except: [:index, :show, :edit]
 
@@ -26,19 +28,32 @@ Rails.application.routes.draw do
 
 
 
+
   # 화장대 및 화장품 라우팅
+  # 화장품 카테고리 관련 라우팅
 	resources :cosmetics, except: [:index] do
     collection do
       get 'mypage'
       get 'search'
       get 'search_result'
       get 'feed'
-    end 
-  end
+    end
 
+    member do
+      get :get_middle_categories, defaults: { format: "js" }
+      get :get_small_categories, defaults: { format: "js" }
+    end 
+    
   #댓글 라우팅 다은
   post '/cosmetics/:user_id/comment/create' => 'cosmetics#commentcreate', as: 'index_comment'
  
 
+  # 타인의 화장대 들어가는 라우팅
+
   get '/cosmetics/tables/:user_id' => 'cosmetics#table', as: 'table_cosmetic'
+
+
+  # 인생템(Best) 관련 라우팅
+  post 'bests/:cosmetic_id' => 'bests#best_toggle', as: 'toggle_bests'
+
 end
