@@ -64,8 +64,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
 
-
-
 # 회원가입
 gem 'devise'
 
@@ -75,3 +73,6 @@ gem 'figaro'
 # 이미지등록 (커리어웨이브 & 미니매직)
 gem 'carrierwave'
 gem 'mini_magick'
+
+# 카테고리구현
+gem 'ancestry'
