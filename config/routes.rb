@@ -43,9 +43,13 @@ Rails.application.routes.draw do
       get :get_middle_categories, defaults: { format: "js" }
       get :get_small_categories, defaults: { format: "js" }
     end 
-  end
+    
+  #댓글 라우팅 다은
+  post '/cosmetics/:user_id/comment/create' => 'cosmetics#commentcreate', as: 'index_comment'
+ 
 
   # 타인의 화장대 들어가는 라우팅
+
   get '/cosmetics/tables/:user_id' => 'cosmetics#table', as: 'table_cosmetic'
 
 
