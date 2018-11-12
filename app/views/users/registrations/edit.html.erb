@@ -23,7 +23,7 @@
     <%= f.label :"프로필 사진" %>
     
     <!-- 기본이미지 장착하면 상관업따~ -->
-    <img src="<%#= current_user.profile_img.thumb.url %>" id='regis_image'/>
+    <img src="<%= current_user.profile_img.thumb.url %>" id='regis_image'/>
     
     <%= f.file_field :profile_img %>
   </div>
@@ -63,7 +63,7 @@
 
   <div class="field">
     <%= f.label :"현재 비밀번호" %> (정보 수정을 위해 현재 비밀번호가 필요합니다)<br />
-    <%= f.password_field :current_pssword, autocomplete: "current-password" %>
+    <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
   <div class="actions">

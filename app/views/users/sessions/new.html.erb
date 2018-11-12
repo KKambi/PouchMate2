@@ -1,6 +1,11 @@
 <h2>로그인</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+  <!-- 에러 메세지 -->
+  <%= devise_error_messages! %>
+
+
   <div class="field">
     <%= f.label :이메일 %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
