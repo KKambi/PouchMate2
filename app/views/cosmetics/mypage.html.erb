@@ -6,7 +6,7 @@
 <table>
   <thead>
     <tr>
-      <th>Title</th>
+      <th>Name</th>
       <th>Memo</th>
       <th>Category</th>
       <th>Exp date</th>
@@ -19,12 +19,16 @@
   <tbody>
     <% @cosmetics.each do |cosmetic| %>
       <tr>
-        <td><%= cosmetic.title %></td>
+        <td><%= cosmetic.name %></td>
         <td><%= cosmetic.memo %></td>
         <td><%= cosmetic.category %></td>
         <td><%= cosmetic.exp_date %></td>
         <td><%= cosmetic.user_id %></td>
-        <td><%= cosmetic.carousel %></td>
+
+        <td>
+          [이후 카로셀 DB와 연동 필요]
+        </td>
+        
         <td><%= link_to 'Show', cosmetic %></td>
         <td><%= link_to 'Edit', edit_cosmetic_path(cosmetic) %></td>
         <td><%= link_to 'Destroy', cosmetic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -47,7 +51,9 @@
 
 <br>
 
-<%= link_to 'New Cosmetic', new_cosmetic_path %>
+<%= link_to '[임시] 화장대 만들러 가기', new_carousel_path  %>
+
+<%= link_to '[임시] 화장품 등록하러 가기', new_cosmetic_path %>
 
 <div class="test">
   <h3>
@@ -55,7 +61,7 @@
   </h3>
   <% @bests.each do |best_row| %>
     <div>
-      <%= best_row.cosmetic.title %>
+      <%= best_row.cosmetic.name %>
     </div>
   <% end %>
 </div>

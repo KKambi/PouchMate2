@@ -1,0 +1,41 @@
+
+<%= form_with(model: carousel, local: true) do |form| %>
+  <% if carousel.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(carousel.errors.count, "error") %> prohibited this carousel from being saved:</h2>
+
+      <ul>
+      <% carousel.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :'이름' %>
+    <%= form.text_field :name, :required => true %>
+  </div>
+
+  <div class="field">
+    <%= label_tag(:background_id, "화장대1") %>
+    <%= form.radio_button(:background_id, 1, :checked => true) %>
+    
+    <%= label_tag(:background_id, "화장대2") %>
+    <%= form.radio_button :background_id, 2 %>
+    
+    <%= label_tag(:background_id, "화장대3") %>
+    <%= form.radio_button(:background_id, 3) %>
+
+    <%= form.password_field :background_id %>        
+  </div>
+
+  <!-- user_id를 전달하기 위한 hidden_field -->
+  <%= form.hidden_field :user_id, value: current_user.id %> 
+
+  <%= form.hidden_field :carousel_background_id, value: 1 %> 
+
+  <div class="actions">
+    <%= form.submit '생성' %>
+  </div>
+<% end %>

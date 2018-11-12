@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_11_080529) do
+ActiveRecord::Schema.define(version: 2018_11_12_085140) do
 
   create_table "bests", force: :cascade do |t|
     t.integer "cosmetic_id"
@@ -21,6 +21,23 @@ ActiveRecord::Schema.define(version: 2018_11_11_080529) do
     t.index ["user_id"], name: "index_bests_on_user_id"
   end
 
+  create_table "carousel_backgrounds", force: :cascade do |t|
+    t.string "name"
+    t.string "img_address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "carousels", force: :cascade do |t|
+    t.string "name"
+    t.integer "user_id"
+    t.integer "carousel_background_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["carousel_background_id"], name: "index_carousels_on_carousel_background_id"
+    t.index ["user_id"], name: "index_carousels_on_user_id"
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -29,22 +46,23 @@ ActiveRecord::Schema.define(version: 2018_11_11_080529) do
     t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
-  create_table "cosmetic_data", force: :cascade do |t|
+  create_table "cosmetic_infos", force: :cascade do |t|
     t.string "name"
-    t.string "cosmetic_image"
+    t.string "info_img"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "cosmetics", force: :cascade do |t|
-    t.string "title"
+    t.string "name"
     t.string "memo"
     t.string "category"
     t.date "exp_date"
     t.integer "user_id"
-    t.integer "carousel"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "info_id"
+    t.integer "carousel_id"
   end
 
   create_table "friend_requests", force: :cascade do |t|
@@ -75,7 +93,7 @@ ActiveRecord::Schema.define(version: 2018_11_11_080529) do
     t.datetime "updated_at", null: false
     t.string "nickname"
     t.integer "age"
-    t.boolean "gender"
+    t.integer "gender"
     t.boolean "admin", default: false
     t.string "self_intro"
     t.string "profile_img"

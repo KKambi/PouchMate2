@@ -68,7 +68,7 @@ class CosmeticsController < ApplicationController
   def destroy
     @cosmetic.destroy
     respond_to do |format|
-      format.html { redirect_to cosmetics_url, notice: 'Cosmetic was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'Cosmetic was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -81,6 +81,6 @@ class CosmeticsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cosmetic_params
-      params.require(:cosmetic).permit(:title, :memo, :category, :exp_date, :user_id, :carousel)
+      params.require(:cosmetic).permit(:name, :memo, :category, :exp_date, :user_id)
     end
 end

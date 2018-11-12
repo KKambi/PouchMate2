@@ -29,7 +29,7 @@ Rails.application.routes.draw do
 
 
 
-  # 화장대 및 화장품 라우팅
+  # 화장품 라우팅
   # 화장품 카테고리 관련 라우팅
 	resources :cosmetics, except: [:index] do
     collection do
@@ -43,6 +43,10 @@ Rails.application.routes.draw do
       get :get_middle_categories, defaults: { format: "js" }
       get :get_small_categories, defaults: { format: "js" }
     end 
+  end
+
+  # 화장대 생성 관련 라우팅
+  resources :carousels, only: [:new, :create] do
   end
 
   # 타인의 화장대 들어가는 라우팅
