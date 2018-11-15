@@ -4,7 +4,7 @@
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :이메일 %><br />
+    <%= f.label :"이메일" %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email", :required => true %>
   </div>
 
@@ -25,10 +25,10 @@
 
   <div class="field">
     <%= f.label :"성별" %>
-    <%= f.radio_button(:gender, "남자", :checked => true) %>
     <%= label_tag(:gender, "남자") %>
-    <%= f.radio_button(:gender, "여자") %>
+    <%= f.radio_button(:gender, 0, :checked => true) %>
     <%= label_tag(:gender, "여자") %>
+    <%= f.radio_button(:gender, 1) %>
   </div>
 
   <div class="field">

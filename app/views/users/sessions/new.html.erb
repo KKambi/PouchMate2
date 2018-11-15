@@ -2,8 +2,6 @@
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-  <!-- 에러 메세지 -->
-  <%= devise_error_messages! %>
 
 
   <div class="field">
@@ -22,3 +20,4 @@
 <% end %>
 
 <%= render "users/shared/links" %>
+

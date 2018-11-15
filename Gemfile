@@ -76,3 +76,6 @@ gem 'mini_magick'
 
 # 카테고리구현
 gem 'ancestry'
+
+# 디바이스 메세지 한글 번역
+gem 'devise-i18n'

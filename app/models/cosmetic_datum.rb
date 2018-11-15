@@ -1,2 +1,0 @@
-class CosmeticDatum < ApplicationRecord
-end

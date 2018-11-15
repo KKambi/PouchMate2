@@ -1,0 +1,46 @@
+
+<%= form_with(model: carousel, local: true) do |form| %>
+  <% if carousel.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(carousel.errors.count, "error") %> prohibited this carousel from being saved:</h2>
+
+      <ul>
+      <% carousel.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :'이름' %>
+    <%= form.text_field :name, :required => true %>
+  </div>
+
+  <div class="field">
+    <div>
+      <%= label_tag(:carousel_background_id, "화장대1") %>
+      <img src="/back-1.jpg" style="width: 150px;"></img>
+      <%= form.radio_button(:carousel_background_id, 1, :checked => true) %>
+    </div>
+
+    <div>
+      <%= label_tag(:carousel_background_id, "화장대2") %>
+      <img src="/back-2.jpg" style="width: 150px;"></img>
+      <%= form.radio_button :carousel_background_id, 2 %>
+    </div>
+
+    <div>
+      <%= label_tag(:carousel_background_id, "화장대3") %>
+      <img src="/back-3.jpg" style="width: 150px;"></img>
+      <%= form.radio_button(:carousel_background_id, 3) %>
+    </div>
+  </div>
+
+  <!-- user_id를 전달하기 위한 hidden_field -->
+  <%= form.hidden_field :user_id, value: current_user.id %> 
+
+  <div class="actions">
+    <%= form.submit '등록' %>
+  </div>
+<% end %>

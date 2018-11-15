@@ -29,7 +29,7 @@ Rails.application.routes.draw do
 
 
 
-  # 화장대 및 화장품 라우팅
+  # 화장품 라우팅
   # 화장품 카테고리 관련 라우팅
 	resources :cosmetics, except: [:index] do
     collection do
@@ -47,6 +47,10 @@ Rails.application.routes.draw do
   #댓글 라우팅 다은
   post '/cosmetics/:user_id/comment/create' => 'cosmetics#commentcreate', as: 'index_comment'
  
+
+  # 화장대 생성 관련 라우팅
+  resources :carousels, only: [:new, :create, :edit, :update, :destroy] do
+  end
 
   # 타인의 화장대 들어가는 라우팅
 

@@ -21,9 +21,6 @@ cleanser_cream = Category.create(name: '클렌징 크림', parent: cleanser)
 cleanser_remover = Category.create(name: '포인트리무버', parent: cleanser)
 cleanser_scrub = Category.create(name: '필링/스크럽', parent: cleanser)
 
-
-
-
 base = Category.create(name: '베이스메이크업')
 
 base_basic = Category.create(name: '기초 메이크업', parent: base)
@@ -41,10 +38,6 @@ base_finish_powder = Category.create(name: '파우더/팩트', parent: base_fini
 base_finish_highlight = Category.create(name: '하이라이트/세이딩', parent: base_finish)
 base_finish_fixer = Category.create(name: '메이크업픽서', parent: base_finish)
 
-
-
-
-
 color = Category.create(name: '색조 메이크업')
 
 color_eye = Category.create(name: '아이', parent: color)
@@ -60,16 +53,18 @@ color_lip_balm = Category.create(name: '립케어/립밤', parent: color_lip)
 
 color_blusher = Category.create(name: '블러셔', parent: color)
 
-
-
-
 bodyhair = Category.create(name: '바디/헤어')
 bodyhair_body = Category.create(name: '바디 보습', parent: bodyhair)
 bodyhair_handfoot = Category.create(name: '핸드/풋', parent: bodyhair)
 bodyhair_hair = Category.create(name: '헤어', parent: bodyhair)
 
-
-
-
 perfume = Category.create(name: '향수')
 others = Category.create(name: '기타')
+
+
+# 화장대 배경 default value
+CarouselBackground.create(name: '배경1', img_address: '/back-1.jpg')
+
+CarouselBackground.create(name: '배경2', img_address: '/back-2.jpg')
+
+CarouselBackground.create(name: '배경3', img_address: '/back-3.jpg')

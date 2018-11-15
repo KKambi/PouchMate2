@@ -14,12 +14,12 @@
 
   <div class="field">
     <%= form.label :'이름' %>
-    <%= form.text_field :title, :required => true %>
+    <%= form.text_field :name, :required => true %>
   </div>
 
   <div class="field">
     <%= form.label :'메모' %>
-    <%= form.text_field :title%>
+    <%= form.text_field :memo%>
   </div>
 
   <div class="field">
@@ -41,8 +41,15 @@
   </div>
 
   <div class="field">
-    <%= form.label :carousel %>
-    <%= form.number_field :carousel %>
+    <% if !current_user.carousels.blank? %>
+      <%= form.label :'화장대 선택' %>
+    <% else %>
+      먼저 화장대를 만들어주세요!
+    <% end %>
+
+    <% current_user.carousels.each do |carousel| %>
+      <%= form.radio_button(:carousel, carousel.name, :checked => true) %>
+    <% end %>
   </div>
 
   <!-- user_id를 전달하기 위한 hidden_field -->
