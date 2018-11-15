@@ -31,7 +31,7 @@ Rails.application.routes.draw do
 
   # 화장품 라우팅
   # 화장품 카테고리 관련 라우팅
-	resources :cosmetics, except: [:index] do
+  resources :cosmetics, except: [:index] do
     collection do
       get 'mypage'
       get 'search'
