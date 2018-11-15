@@ -96,6 +96,6 @@ class CosmeticsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cosmetic_params
-      params.require(:cosmetic).permit(:name, :memo, :category, :exp_date, :user_id)
+      params.require(:cosmetic).permit(:name, :memo, :category, :exp_date, :user_id, :cosmetic_info_id, :carousel_id)
     end
 end

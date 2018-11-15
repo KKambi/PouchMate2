@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_12_085140) do
+ActiveRecord::Schema.define(version: 2018_11_15_111640) do
 
   create_table "bests", force: :cascade do |t|
     t.integer "cosmetic_id"
@@ -69,8 +69,10 @@ ActiveRecord::Schema.define(version: 2018_11_12_085140) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "info_id"
+    t.integer "cosmetic_info_id"
     t.integer "carousel_id"
+    t.index ["carousel_id"], name: "index_cosmetics_on_carousel_id"
+    t.index ["cosmetic_info_id"], name: "index_cosmetics_on_cosmetic_info_id"
   end
 
   create_table "friend_requests", force: :cascade do |t|

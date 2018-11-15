@@ -68,3 +68,8 @@ CarouselBackground.create(name: '배경1', img_address: '/back-1.jpg')
 CarouselBackground.create(name: '배경2', img_address: '/back-2.jpg')
 
 CarouselBackground.create(name: '배경3', img_address: '/back-3.jpg')
+
+# 화장품 정보 default value
+CosmeticInfo.create(name: "화장품1")
+CosmeticInfo.create(name: "화장품2")
+CosmeticInfo.create(name: "화장품3")
