@@ -18,24 +18,29 @@
   </div>
 
   <div class="field">
-    <%= label_tag(:background_id, "화장대1") %>
-    <%= form.radio_button(:background_id, 1, :checked => true) %>
-    
-    <%= label_tag(:background_id, "화장대2") %>
-    <%= form.radio_button :background_id, 2 %>
-    
-    <%= label_tag(:background_id, "화장대3") %>
-    <%= form.radio_button(:background_id, 3) %>
+    <div>
+      <%= label_tag(:carousel_background_id, "화장대1") %>
+      <img src="/back-1.jpg" style="width: 150px;"></img>
+      <%= form.radio_button(:carousel_background_id, 1, :checked => true) %>
+    </div>
 
-    <%= form.password_field :background_id %>        
+    <div>
+      <%= label_tag(:carousel_background_id, "화장대2") %>
+      <img src="/back-2.jpg" style="width: 150px;"></img>
+      <%= form.radio_button :carousel_background_id, 2 %>
+    </div>
+
+    <div>
+      <%= label_tag(:carousel_background_id, "화장대3") %>
+      <img src="/back-3.jpg" style="width: 150px;"></img>
+      <%= form.radio_button(:carousel_background_id, 3) %>
+    </div>
   </div>
 
   <!-- user_id를 전달하기 위한 hidden_field -->
   <%= form.hidden_field :user_id, value: current_user.id %> 
 
-  <%= form.hidden_field :carousel_background_id, value: 1 %> 
-
   <div class="actions">
-    <%= form.submit '생성' %>
+    <%= form.submit '등록' %>
   </div>
 <% end %>

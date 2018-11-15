@@ -53,7 +53,12 @@
 
 <%= link_to '[임시] 화장대 만들러 가기', new_carousel_path  %>
 
+</br>
+
 <%= link_to '[임시] 화장품 등록하러 가기', new_cosmetic_path %>
+
+
+
 
 <div class="test">
   <h3>
@@ -62,6 +67,20 @@
   <% @bests.each do |best_row| %>
     <div>
       <%= best_row.cosmetic.name %>
+    </div>
+  <% end %>
+</div>
+
+<div class="test">
+  <h3>
+    [임시] 화장대 목록
+  </h3>
+  <% current_user.carousels.each do |carousel| %>
+    <div style="margin: 10px 10px 0 0;">
+      이름: <%= carousel.name %></br>
+      사진: [임시]화장대 캡쳐 사진(?)</br>
+      <%= link_to '[임시] 화장대 수정', edit_carousel_path(carousel.id) %></br>
+      <%= link_to '[임시] 화장대 삭제', carousel_path(carousel.id), method: :delete %>
     </div>
   <% end %>
 </div>
