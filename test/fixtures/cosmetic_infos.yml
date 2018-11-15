@@ -2,8 +2,8 @@
 
 one:
   name: MyString
-  cosmetic_image: MyString
+  info_img: MyString
 
 two:
   name: MyString
-  cosmetic_image: MyString
+  info_img: MyString

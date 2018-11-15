@@ -2,5 +2,5 @@
 	$('#middle-select').attr('disabled', true);
 	$('#middle-select').hide();
 <% else %>
-	$('#middle-category').html("<%= j collection_select(:post, :category, @middle_categories, :id, :name, {:prompt => '중분류'}, {:id => 'middle-select', :required => true}) %>");
+	$('#middle-category').html("<%= j collection_select(:cosmetic, :category, @middle_categories, :id, :name, {:prompt => '중분류'}, {:id => 'middle-select', :required => true}) %>");
 <% end %>

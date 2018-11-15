@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class CosmeticDatumTest < ActiveSupport::TestCase
+class CarouselTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

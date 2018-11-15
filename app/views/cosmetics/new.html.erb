@@ -1,5 +1,83 @@
-<h1>[임시] 화장품을 등록하는 페이지</h1>
+<h1>[임시] 화장품 등록</h1>
 
-<%= render 'form', cosmetic: @cosmetic %>
+<% if current_user.carousels.blank? %>
+	화장대를 먼저 등록해주세요!
+
+<% else %>
+	<%= form_with(model: @cosmetic, local: true) do |form| %>
+	  <% if @cosmetic.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@cosmetic.errors.count, "error") %> prohibited this @cosmetic from being saved:</h2>
+
+	      <ul>
+	      <% @cosmetic.errors.full_messages.each do |message| %>
+	        <li><%= message %></li>
+	      <% end %>
+	      </ul>
+	    </div>
+	  <% end %>
+
+	  <div class="field">
+	    <%= form.label :'이름' %>
+	    <%= form.text_field :name, :required => true %>
+	  </div>
+
+	  <div class="field">
+	    <%= form.label :'메모' %>
+	    <%= form.text_field :memo%>
+	  </div>
+
+	  <div class="field">
+	    <div id="big-category">
+	      <%= form.label :'종류' %></br>
+	      <%= form.collection_select :category, Category.roots, 'id', 'name', {:prompt => "대분류"}, {:id => 'big-select', :required => true} %>
+	    </div>
+
+	    <div id="middle-category">
+	    </div>
+
+	    <div id="small-category">
+	    </div>
+	  </div>
+
+	  <div class="field">
+	    <%= form.label :'사용기한' %>
+	    <%= form.date_field :exp_date %>
+	  </div>
+
+	  <div class="field">
+	    <% if !current_user.carousels.blank? %>
+	      <%= form.label :'화장대 선택' %>
+
+		    <% current_user.carousels.each do |carousel| %>
+		    	<%= form.label carousel.name %>
+		      <%= form.radio_button(:carousel_id, carousel.id, :checked => true) %>
+		    <% end %>
+	    <% else %>
+	      먼저 화장대를 만들어주세요!
+	    <% end %>
+
+	  </div>
+
+	  <!-- 임시: info_id를 전달하기 위한 hidden_field -->
+	  <%= form.hidden_field :cosmetic_info_id, value: 1 %> 
+
+
+	  <!-- user_id를 전달하기 위한 hidden_field -->
+	  <%= form.hidden_field :user_id, value: current_user.id %> 
+
+
+
+	  <div class="actions">
+	    <%= form.submit '등록' %>
+	  </div>
+	<% end %>
+<% end %>
+
+
+
 
 <%= link_to 'Back', cosmetics_path %>
+
+<%= javascript_include_tag('cosmetic_new') %>
+
