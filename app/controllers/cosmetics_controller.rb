@@ -6,7 +6,10 @@ class CosmeticsController < ApplicationController
   def mypage
     @user = current_user
     @cosmetics = Cosmetic.where("user_id = ?", current_user.id)
+
+    @user = User.find(current_user.id)
     @bests = current_user.bests.all
+
   end
 
   # GET /cosmetics/tables/1
@@ -14,6 +17,7 @@ class CosmeticsController < ApplicationController
   def table
     @owner_user_id = params[:user_id]
     @cosmetics = Cosmetic.where("user_id = ?", @owner_user_id)
+    @user = User.find(params[:user_id])
   end
 
   # GET /cosmetics/new
@@ -72,6 +76,17 @@ class CosmeticsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  #다응다응
+  def commentcreate
+        @commentnew = Comment.new
+        @commentnew.content = params[:content]
+        @commentnew.writer_id = current_user.id
+        @commentnew.user_id = params[:user_id]
+        @commentnew.save
+        
+        redirect_back(fallback_location: root_path)
+        
+    end
 
   private
     # Use callbacks to share common setup or constraints between actions.

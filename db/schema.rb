@@ -12,6 +12,13 @@
 
 ActiveRecord::Schema.define(version: 2018_11_12_085140) do
 
+  create_table "comments", force: :cascade do |t|
+    t.integer "writer_id"
+    t.string "content"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+
   create_table "bests", force: :cascade do |t|
     t.integer "cosmetic_id"
     t.integer "user_id"
@@ -51,6 +58,7 @@ ActiveRecord::Schema.define(version: 2018_11_12_085140) do
     t.string "info_img"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+
   end
 
   create_table "cosmetics", force: :cascade do |t|

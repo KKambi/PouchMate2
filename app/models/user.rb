@@ -5,6 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
 
+  #코멘트 관련 1:n 다은
+  has_many :comments, dependent: :destroy
+
   # 프로필 사진 업로드할 수 있도록
   mount_uploader :profile_img, ProfileImgUploader
 

@@ -38,6 +38,21 @@
 </table>
 
 <br>
+--------파우치 댓글-------
+
+    <%  @user.comments.each do |x| %>
+        <%= x.writer_id %>
+        <%= x.content %><br>
+        
+    <%  end %>
+    
+      
+        <%= form_tag index_comment_path(user_id:@owner_user_id) do %>
+           <%= text_field_tag "content", nil%><br><br>
+           <input type="submit" value="작성">
+        <% end %>
+-------------------------------------------<br>
+
 
 <%= link_to 'New Cosmetic', new_cosmetic_path %>
 
