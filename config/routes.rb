@@ -31,7 +31,7 @@ Rails.application.routes.draw do
 
   # 화장품 라우팅
   # 화장품 카테고리 관련 라우팅
-	resources :cosmetics, except: [:index] do
+  resources :cosmetics, except: [:index] do
     collection do
       get 'mypage'
       get 'search'
@@ -43,6 +43,7 @@ Rails.application.routes.draw do
       get :get_middle_categories, defaults: { format: "js" }
       get :get_small_categories, defaults: { format: "js" }
     end 
+  end
     
   #댓글 라우팅 다은
   post '/cosmetics/:user_id/comment/create' => 'cosmetics#commentcreate', as: 'index_comment'
