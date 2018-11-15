@@ -43,4 +43,10 @@ class User < ApplicationRecord
   def is_best? (cosmetic)
     Best.find_by(user_id: self.id, cosmetic_id: cosmetic.id).present?
   end
+
+  def is_friend? (friend)
+    Friendship.find_by(user_id: self.id, friend_id: friend.id).present?
+  end
+
+
 end

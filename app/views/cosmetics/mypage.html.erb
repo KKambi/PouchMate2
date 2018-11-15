@@ -53,8 +53,11 @@
 --------파우치 댓글-------
 
     <%  @user.comments.each do |x| %>
-        <%= x.writer_id %>
-        <%= x.content %><br>
+    <br>
+        <%= User.find(x.writer_id).nickname %>
+        <%= x.content %>
+        <%= link_to 'Destroy', comment_destroy_path(user_id:current_user.id, comment_id:x.id), method: "delete" %>
+       
         
     <%  end %>
     

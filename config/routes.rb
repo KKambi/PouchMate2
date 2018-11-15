@@ -29,6 +29,9 @@ Rails.application.routes.draw do
 
 
 
+
+
+
   # 화장품 라우팅
   # 화장품 카테고리 관련 라우팅
   resources :cosmetics, except: [:index] do
@@ -47,7 +50,7 @@ Rails.application.routes.draw do
     
   #댓글 라우팅 다은
   post '/cosmetics/:user_id/comment/create' => 'cosmetics#commentcreate', as: 'index_comment'
- 
+  delete '/cosmetics/:user_id/comment/:comment_id/create' => 'cosmetics#commentdestroy', as: 'comment_destroy'
 
   # 화장대 생성 관련 라우팅
   resources :carousels, only: [:new, :create, :edit, :update, :destroy] do
@@ -60,5 +63,7 @@ Rails.application.routes.draw do
 
   # 인생템(Best) 관련 라우팅
   post 'bests/:cosmetic_id' => 'bests#best_toggle', as: 'toggle_bests'
+
+
 
 end
