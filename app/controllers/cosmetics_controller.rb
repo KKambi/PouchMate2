@@ -76,7 +76,7 @@ class CosmeticsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  #다응다응
+  #화장대 댓글 다은
   def commentcreate
         @commentnew = Comment.new
         @commentnew.content = params[:content]
@@ -86,7 +86,28 @@ class CosmeticsController < ApplicationController
         
         redirect_back(fallback_location: root_path)
         
-    end
+  end
+
+  def commentdestroy
+      @commentdestroy = Comment.find(params[:comment_id])
+      @commentdestroy.destroy
+
+      redirect_back(fallback_location: root_path)
+  end
+
+  #검색 페이지 다은
+  def search
+
+    
+  end
+
+  #검색결과 다은
+  def search_result
+      @items = Cosmetic_data.where(["name LIKE ?","%#{params[:mySearch]}%"])
+      @usersearch = User.where(["nickname LIKE ?","%#{params[:mySearch]}%"])
+      @uzi_search = params[:mySearch]
+  
+  end 
 
   private
     # Use callbacks to share common setup or constraints between actions.
