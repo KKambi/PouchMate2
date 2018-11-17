@@ -30,7 +30,7 @@
       [임시]한비_Footer링크
       
       <div class="footer" style="display:flex; flex-direction: column;">
-      <%= link_to mypage_cosmetics_path do %>
+      <%= link_to root_path do %>
         1. 홈(마이페이지)
       <% end %>
 
@@ -40,6 +40,10 @@
       
       <%= link_to friends_index_path do %>
         3. 친구관리로 이동하기
+      <% end %>
+
+      <%= link_to feed_cosmetics_path do %>
+        4. 피드
       <% end %>
 
 
