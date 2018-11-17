@@ -2,12 +2,16 @@ ko:
   datetime:
     distance_in_words:
       about_x_hours:
+        one: "%{count}시간 전"
         other: "%{count}시간 전"
       about_x_months:
+        one: "%{count}달 전"
         other: "%{count}달 전"
       about_x_years:
+        one: "%{count}년 전"
         other: "%{count}년 전"
       almost_x_years:
+        one: "%{count}년 이하"
         other: "%{count}년 이하"
       half_a_minute: "30초 전"
       less_than_x_minutes:
