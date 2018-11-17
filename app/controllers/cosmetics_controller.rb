@@ -1,24 +1,30 @@
 class CosmeticsController < ApplicationController
+  include ActionView::Helpers::DateHelper
+
   before_action :set_cosmetic, only: [:show, :edit, :update, :destroy]
 
-
-  # GET /cosmetics
-  def mypage
+  # GET /cosmetics/feed
+  def feed
     @user = current_user
-    @cosmetics = Cosmetic.where("user_id = ?", current_user.id)
 
-    @user = User.find(current_user.id)
-    @bests = current_user.bests.all
-
+    # 시간 메세지는 config/locales/ko.yml 에서 수정
+    @feeds = ActiveRecord::Base.connection.execute("SELECT a.id AS origin_id, a.user_id AS friend_id, 1 AS idx,  a.created_at AS time FROM cosmetics a, friendships b WHERE a.user_id = b.friend_id AND b.user_id = #{@user.id} UNION ALL SELECT a.id AS origin_id, a.user_id AS friend_id, 2 AS idx, a.created_at AS time  FROM carousels a, friendships b WHERE a.user_id = b.friend_id AND b.user_id = #{@user.id} UNION ALL SELECT a.id AS origin_id, a.user_id AS friend_id, 3 AS idx, a.created_at AS time  FROM bests a, friendships b WHERE a.user_id = b.friend_id AND b.user_id = #{@user.id} ORDER BY time DESC")
   end
 
   # GET /cosmetics/tables/1
   # GET /cosmetics/tables/1.json
   def table
-    @owner_user_id = params[:user_id]
-    @cosmetics = Cosmetic.where("user_id = ?", @owner_user_id)
-    @user = User.find(params[:user_id])
-    @bests = User.find(params[:user_id]).bests.all
+
+    @user_id = params[:user_id]
+    if @user_id.nil? || @user_id == current_user.id
+      @user = current_user
+    else
+      @user = User.find(@user_id)
+    end
+
+    @cosmetics = Cosmetic.where("user_id = ?", @user.id)
+    @bests = @user.bests.all
+
   end
 
   # GET /cosmetics/new
