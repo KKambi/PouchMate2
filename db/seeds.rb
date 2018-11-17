@@ -74,3 +74,14 @@ CarouselBackground.create(name: '배경3', img_address: '/back-3.jpg')
 CosmeticInfo.create(name: "화장품1")
 CosmeticInfo.create(name: "화장품2")
 CosmeticInfo.create(name: "화장품3")
+
+
+
+
+Best.create(cosmetic_id: 3, user_id: 1)
+Best.create(cosmetic_id: 2, user_id: 1)
+Best.create(cosmetic_id: 4, user_id: 1)
+Best.create(cosmetic_id: 3, user_id: 3)
+Best.create(cosmetic_id: 2, user_id: 1)
+Best.create(cosmetic_id: 1, user_id: 2)
+Best.create(cosmetic_id: 3, user_id: 4)

@@ -4,7 +4,61 @@
 
 <% else %>
 
+  <tbody>
+    <% @cosmetics.each do |cosmetic| %>
+      <tr>
+        <td><%= cosmetic.name %></td>
+        <td><%= cosmetic.memo %></td>
+        <td><%= cosmetic.category %></td>
+        <td><%= cosmetic.exp_date %></td>
+        <td><%= cosmetic.user_id %></td>
+        
+        <td>  
+        [이후 카로셀 DB와 연동 필요]
+        </td>
+        
+        <td><%= link_to 'Show', cosmetic %></td>
+        <td><%= link_to 'Edit', edit_cosmetic_path(cosmetic) %></td>
+        <td><%= link_to 'Destroy', cosmetic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+--------파우치 댓글-------
+
+    <%  @user.comments.each do |x| %>
+    <br>
+        <%= User.find(x.writer_id).nickname %>
+        <%= x.content %>
+        <% if x.writer_id == current_user.id %>
+          <%= link_to 'Destroy', comment_destroy_path(user_id:current_user.id, comment_id:x.id), method: "delete" %>
+        <% end %>
+        
+    <%  end %>
+    
+      
+        <%= form_tag index_comment_path(user_id:@owner_user_id) do %>
+           <%= text_field_tag "content", nil%><br><br>
+           <input type="submit" value="작성">
+        <% end %>
+-------------------------------------------<br>
+<div class="test">
+  <h3>
+    [임시] 인생템 목록
+  </h3>
+  <% @bests.each do |best_row| %>
+    <div>
+      <%= best_row.cosmetic.name %>
+    </div>
+  <% end %>
+</div>
+
+
+
   <%= render 'othertable' %>
+
 
 <% end %>
 

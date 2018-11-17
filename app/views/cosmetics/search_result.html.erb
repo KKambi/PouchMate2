@@ -17,11 +17,20 @@
 <h1> <화장품 결과> </h1>
 
 <% @items.each do |k| %>
-	<div class='search_Btn'>
-		<%= k.title %>
-	</div>
+  <div class='search_Btn'>
+    <%= k.name %>
+  </div>
 ---------------------------------
 <% end %>
+
+<h1> <임시 화장품 결과> </h1>
+<% @items2.each do |k| %>
+  <div class='search_Btn'>
+    <%= k.name %>
+  </div>
+---------------------------------
+<% end %>
+
 
 
 <h1><유저 검색></h1>
