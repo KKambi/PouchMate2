@@ -13,3 +13,51 @@
  *= require_tree .
  *= require_self
  */
+/*mobile style*/
+@media only screen and (max-width: 400px) {
+	.main_carousel {
+		height: 318px;
+		background-color: pink;
+	}
+	.main_intro {
+		height: 145px;
+		width: 90%;
+		background-color: yellow;
+		margin: 0 auto;
+		padding: 20px;
+	}
+	.main_vanity {
+		height: 108px;
+		background-color: brown;
+	}
+	.main_lifetem {
+		height : 108px;
+		background-color: blue;
+	}
+	.intro_top{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.intro_cosmetics_top, .intro_friends_top{
+		font-size: 19px;
+		text-align: center;
+	}
+	.intro_cosmetics_bottom, .intro_friends_bottom{
+		font-size: 12px;
+		text-align: center;
+	}
+	.intro_bottom_name{
+		font-size: 15px;
+	}
+	.intro_bottom {
+		padding-left: 10px;
+		padding-top: 5px;
+	}
+
+}
+
+/*tablet style*/
+@media only screen and (min-width: 401px) and (max-width: 960px) {
+
+}
