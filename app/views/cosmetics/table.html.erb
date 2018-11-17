@@ -56,6 +56,18 @@
            <input type="submit" value="작성">
         <% end %>
 -------------------------------------------<br>
+<div class="test">
+  <h3>
+    [임시] 인생템 목록
+  </h3>
+  <% @bests.each do |best_row| %>
+    <div>
+      <%= best_row.cosmetic.name %>
+    </div>
+  <% end %>
+</div>
+
+
 
 
 <%= link_to 'New Cosmetic', new_cosmetic_path %>

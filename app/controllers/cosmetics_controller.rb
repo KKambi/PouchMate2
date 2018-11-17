@@ -18,6 +18,7 @@ class CosmeticsController < ApplicationController
     @owner_user_id = params[:user_id]
     @cosmetics = Cosmetic.where("user_id = ?", @owner_user_id)
     @user = User.find(params[:user_id])
+    @bests = User.find(params[:user_id]).bests.all
   end
 
   # GET /cosmetics/new
@@ -97,13 +98,39 @@ class CosmeticsController < ApplicationController
 
   #검색 페이지 다은
   def search
+    namedic=Hash.new 
+    countdic=Hash.new 
+    temparr=[]
 
-    
+    current_user.bests.all. each do |cbest|
+      temparr.clear
+      
+      Best.where(cosmetic_id: cbest.cosmetic_id).each do |temp|
+        temparr.push(temp.user_id)
+
+        for i in temparr
+          if namedic.key?(i) == false
+            namedic[i] = [cbest]
+          else
+            namedic[i] += [cbest]
+          end
+        end
+      end  #temp 루프 끝
+    end
+
+    namedic.each do |key, value|
+      countdic[key]=namedic[key].count
+    end
+    @countdic=countdic.sort_by {|k,v| v}.reverse.to_h
+
+
+
   end
 
   #검색결과 다은
   def search_result
-      @items = Cosmetic_data.where(["name LIKE ?","%#{params[:mySearch]}%"])
+      @items = CosmeticInfo.where(["name LIKE ?","%#{params[:mySearch]}%"])
+      @items2 = Cosmetic.where(["name LIKE ?","%#{params[:mySearch]}%"]) #임시로
       @usersearch = User.where(["nickname LIKE ?","%#{params[:mySearch]}%"])
       @uzi_search = params[:mySearch]
   
