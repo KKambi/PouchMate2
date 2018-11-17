@@ -1,1 +1,36 @@
-<h1>친구의 소식(피드)</h1>
+<div class="test">
+  <h3>
+    [임시] 피드 목록
+  </h3>
+  <% @feeds.each do |feed| %>
+    <% @feed_index = feed['idx'] %>
+    <% @feed_time = Time.parse feed['time'] %>
+    <% @friend_nickname = User.find(feed['friend_id']).nickname  %>
+
+    <!-- feed가 화장품 등록이라면 -->
+    <div class>
+      <% if @feed_index == 1 %>
+        <% @obj = Cosmetic.find(feed['origin_id']) %>
+        <%= @friend_nickname %> 님이 화장품 <strong><%= @obj.name %></strong>을 등록했습니다!
+        <%= distance_of_time_in_words(@feed_time, Time.zone.now) %>
+    </div>
+
+    <!-- feed가 화장대 등록이라면 -->
+    <div class>
+    <% elsif @feed_index == 2 %>
+      <% @obj = Carousel.find(feed['origin_id']) %>
+      <%= @friend_nickname %> 님이 화장대 <strong><%= @obj.name %></strong>을 등록했습니다!
+      <%= distance_of_time_in_words(@feed_time, Time.zone.now) %>
+    </div>
+
+    <!-- feed가 인생템 등록이라면 -->
+    <div class>
+    <% elsif @feed_index == 3 %>
+      <% @obj = Cosmetic.find(Best.find(feed['origin_id']).cosmetic_id) %>
+      <%= @friend_nickname %> 님이 화장품 <strong><%= @obj.name %></strong> 을 인생템으로 지정했습니다!
+      <%= distance_of_time_in_words(@feed_time, Time.zone.now) %>
+    <% end %>
+    </div>
+
+  <% end %>
+</div>

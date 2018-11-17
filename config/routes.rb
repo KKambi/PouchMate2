@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     authenticated :user do
-      root 'cosmetics#mypage'
+      root 'cosmetics#table'
     end
 
     unauthenticated do
@@ -36,7 +36,6 @@ Rails.application.routes.draw do
   # 화장품 카테고리 관련 라우팅
   resources :cosmetics, except: [:index] do
     collection do
-      get 'mypage'
       get 'search'
       get 'search_result'
       get 'feed'

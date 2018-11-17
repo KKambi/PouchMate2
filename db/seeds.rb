@@ -2,6 +2,9 @@
 #1 rake db:migrate -> rake db:seed
 #2 rake db:setup
 
+# 테스트 id
+
+
 # 화장품 카테고리 default value
 skincare = Category.create(name: '기초 스킨케어')
 
@@ -64,9 +67,7 @@ others = Category.create(name: '기타')
 
 # 화장대 배경 default value
 CarouselBackground.create(name: '배경1', img_address: '/back-1.jpg')
-
 CarouselBackground.create(name: '배경2', img_address: '/back-2.jpg')
-
 CarouselBackground.create(name: '배경3', img_address: '/back-3.jpg')
 
 # 화장품 정보 default value
