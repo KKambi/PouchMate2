@@ -71,9 +71,11 @@ CarouselBackground.create(name: '배경2', img_address: '/back-2.jpg')
 CarouselBackground.create(name: '배경3', img_address: '/back-3.jpg')
 
 # 화장품 정보 default value
-CosmeticInfo.create(name: "화장품1")
-CosmeticInfo.create(name: "화장품2")
-CosmeticInfo.create(name: "화장품3")
+CosmeticInfo.create(name: "사용자등록_화장품")
+
+CosmeticInfo.create(name: "견본_클렌징워터", info_img: '/cos-1.jpg', category_id: 10)
+CosmeticInfo.create(name: "견본_클렌징폼", info_img: '/cos-2.jpg', category_id: 9)
+CosmeticInfo.create(name: "견본_바디워시", info_img: '/cos-3.jpg', category_id: 20)
 
 
 

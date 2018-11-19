@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_15_111640) do
+ActiveRecord::Schema.define(version: 2018_11_19_110929) do
 
   create_table "bests", force: :cascade do |t|
     t.integer "cosmetic_id"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2018_11_15_111640) do
     t.string "info_img"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "category_id"
   end
 
   create_table "cosmetics", force: :cascade do |t|
