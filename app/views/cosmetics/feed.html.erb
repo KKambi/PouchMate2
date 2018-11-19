@@ -19,7 +19,15 @@
           <img src='<%= @friend.profile_img.thumb %>' class="feed_profile_img">
           <div class="feed_profile_content">
             <%= @friend_nickname %></br>
-            <%= distance_of_time_in_words(@feed_time, Time.zone.now) %>
+            
+            <% if @curr_time-1.month < @feed_time %>
+              <%= distance_of_time_in_words(@feed_time, @curr_time) %> 
+            <% elsif @curr_time-1.year < x.create_at && @feed_time <= @curr_time-1.month %>
+              <%= @feed_time.strftime("%m월 %d일") %>  
+            <% else %>
+              <%= @feed_time.strftime("%Y년 %m월 %d일") %>  
+            <%end%>
+
           </div>
         </div>
 
@@ -45,7 +53,15 @@
           <img src='<%= @friend.profile_img.thumb %>' class="feed_profile_img">
           <div class="feed_profile_content">
             <strong><%= @friend_nickname %></strong></br>
-            <%= distance_of_time_in_words(@feed_time, Time.zone.now) %>
+
+            <% if @curr_time-1.month < @feed_time %>
+              <%= distance_of_time_in_words(@feed_time, @curr_time) %> 
+            <% elsif @curr_time-1.year < x.create_at && @feed_time <= @curr_time-1.month %>
+              <%= @feed_time.strftime("%m월 %d일") %>  
+            <% else %>
+              <%= @feed_time.strftime("%Y년 %m월 %d일") %>  
+            <%end%>
+
           </div>
         </div>
 
@@ -66,7 +82,15 @@
           <img src='<%= @friend.profile_img.thumb %>' class="feed_profile_img">
           <div class="feed_profile_content">
             <%= @friend_nickname %></br>
-            <%= distance_of_time_in_words(@feed_time, Time.zone.now) %>
+            
+            <% if @curr_time-7.day <= @feed_time %>
+              <%= distance_of_time_in_words(@feed_time, @curr_time) %> 
+            <% elsif @curr_time-1.year < x.create_at && @feed_time < @curr_time-7.day %>
+              <%= @feed_time.strftime("%m월 %d일") %>  
+            <% else %>
+              <%= @feed_time.strftime("%Y년 %m월 %d일") %>  
+            <%end%>
+
           </div>
         </div>
 

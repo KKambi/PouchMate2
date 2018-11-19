@@ -6,6 +6,7 @@ class CosmeticsController < ApplicationController
   # GET /cosmetics/feed
   def feed
     @user = current_user
+    @curr_time = Time.zone.now
 
     # 시간 메세지는 config/locales/ko.yml 에서 수정
     @feeds = ActiveRecord::Base.connection.execute("SELECT a.id AS origin_id, a.user_id AS friend_id, 1 AS idx,  a.created_at AS time FROM cosmetics a, friendships b WHERE a.user_id = b.friend_id AND b.user_id = #{@user.id} UNION ALL SELECT a.id AS origin_id, a.user_id AS friend_id, 2 AS idx, a.created_at AS time  FROM carousels a, friendships b WHERE a.user_id = b.friend_id AND b.user_id = #{@user.id} UNION ALL SELECT a.id AS origin_id, a.user_id AS friend_id, 3 AS idx, a.created_at AS time FROM bests a, friendships b WHERE a.user_id = b.friend_id AND b.user_id = #{@user.id} ORDER BY time DESC")
@@ -14,6 +15,7 @@ class CosmeticsController < ApplicationController
   # GET /cosmetics/tables/1
   # GET /cosmetics/tables/1.json
   def table
+    @curr_time = Time.zone.now
 
     @user_id = params[:user_id]
     if @user_id.nil? || @user_id == current_user.id
