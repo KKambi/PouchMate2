@@ -1,8 +1,34 @@
+<div class="main_carousel"></div>
+<div class="main_intro">
+  <div class="intro_top">
+    <div class="intro_face"><img src='/naeun.png' style='width: 60px; height: 60px; border-radius: 50%;'></div>
+
+    <div class="intro_friends">
+      <div class="intro_friends_top">152</div>
+      <div class="intro_friends_bottom">friends</div>
+    </div>
+
+    <div class="intro_cosmetics">
+      <div class="intro_cosmetics_top">45</div>
+      <div class="intro_cosmetics_bottom">cosmetics</div>
+    </div>
+
+    <div class="intro_settings"><img src='/more3.png' style='width: 20px'></div>
+  </div>
+
+  <div class="intro_bottom">
+    <div class="intro_bottom_name">이재인</div>
+    <div class="intro_bottom_lineintro">안녕다들만나서반가워</div>
+  </div>
+
+</div>
+<div class="main_vanity"></div>
+<div class="main_lifeitem"></div>
+<div class='main_comment'></div>
+<div class='main_cosmeticlist'></div>
 <h1>
   마이페이지 (내 화장대)
 </h1>
-
-
 <table>
   <thead>
     <tr>
@@ -15,7 +41,6 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
     <% @cosmetics.each do |cosmetic| %>
       <tr>
@@ -24,7 +49,6 @@
         <td><%= cosmetic.category %></td>
         <td><%= cosmetic.exp_date %></td>
         <td><%= cosmetic.user_id %></td>
-
         <td>
           [이후 카로셀 DB와 연동 필요]
         </td>
@@ -32,7 +56,6 @@
         <td><%= link_to 'Show', cosmetic %></td>
         <td><%= link_to 'Edit', edit_cosmetic_path(cosmetic) %></td>
         <td><%= link_to 'Destroy', cosmetic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
         <td>
         <% if current_user.is_best?(cosmetic) %>
           <%= link_to toggle_bests_path(cosmetic.id), method: :post do %>
@@ -48,10 +71,8 @@
     <% end %>
   </tbody>
 </table>
-
 <br>
 --------파우치 댓글-------
-
     <% @user.comments.each do |x| %>
     <br>
         <%= User.find(x.writer_id).nickname %>
@@ -65,7 +86,6 @@
         <% else %>
           <%= x.created_at.to_date %>  
         <%end%>
-
         <%= link_to 'Destroy', comment_destroy_path(user_id: current_user.id, comment_id: x.id), method: "delete" %>
     <% end %>
     
@@ -74,17 +94,9 @@
       <input type="submit" value="작성">
     <% end %>
 -------------------------------------------<br>
-
-
 <%= link_to '[임시] 화장대 만들러 가기', new_carousel_path  %>
-
 </br>
-
 <%= link_to '[임시] 화장품 등록하러 가기', new_cosmetic_path %>
-
-
-
-
 <div class="test">
   <h3>
     [임시] 인생템 목록
@@ -95,7 +107,6 @@
     </div>
   <% end %>
 </div>
-
 <div class="test">
   <h3>
     [임시] 화장대 목록
@@ -109,6 +120,4 @@
     </div>
   <% end %>
 </div>
-
-
 

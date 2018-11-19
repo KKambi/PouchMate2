@@ -11,9 +11,12 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
   </head>
 
   <body>
+    <div class='stickyheader' style="width:375px; height:55px; border-bottom: 1px solid;">PouchMate</div>
     <%= yield %>
 
   <div style="margin: 30px 0;">
@@ -49,6 +52,7 @@
 
       </div>
     </div>
+    
 
   </body>
 </html>
