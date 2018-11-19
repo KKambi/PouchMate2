@@ -14,14 +14,11 @@ module PouchMate2
 
 
     # 디바이스 번역 설정
-		config.i18n.default_locale = :ko
+	config.i18n.default_locale = :ko
 
     # DB의 기준시간 Seoul로 맞추기
-		config.time_zone = 'Seoul'
+	config.time_zone = 'Seoul'
     config.active_record.default_timezone = :local
-
-
-		
 
 
     # Settings in config/environments/* take precedence over those specified here.

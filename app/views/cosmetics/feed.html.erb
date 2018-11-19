@@ -1,36 +1,84 @@
-<div class="test">
-  <h3>
-    [임시] 피드 목록
-  </h3>
-  <% @feeds.each do |feed| %>
-    <% @feed_index = feed['idx'] %>
-    <% @feed_time = Time.parse feed['time'] %>
-    <% @friend_nickname = User.find(feed['friend_id']).nickname  %>
+<div class="feed_page">
+  <div class="feed_page_title">
+    [폰트지정] 친구의 피드!
+  </div>
 
-    <!-- feed가 화장품 등록이라면 -->
-    <div class>
+  <% @feeds.each do |feed| %>
+    <div class="feed">
+      <% @feed_index = feed['idx'] %>
+      <% @feed_time = Time.parse feed['time'] %>
+      <% @friend = User.find(feed['friend_id']) %>
+      <% @friend_nickname = @friend.nickname %>
+      <% @friend_profile_img = @friend.profile_img %>
+
+      <!-- feed가 화장품 등록이라면 -->
       <% if @feed_index == 1 %>
         <% @obj = Cosmetic.find(feed['origin_id']) %>
-        <%= @friend_nickname %> 님이 화장품 <strong><%= @obj.name %></strong>을 등록했습니다!
-        <%= distance_of_time_in_words(@feed_time, Time.zone.now) %>
-    </div>
+        
+        <div class="feed_profile">
+          <img src='<%= @friend.profile_img.thumb %>' class="feed_profile_img">
+          <div class="feed_profile_content">
+            <%= @friend_nickname %></br>
+            <%= distance_of_time_in_words(@feed_time, Time.zone.now) %>
+          </div>
+        </div>
 
-    <!-- feed가 화장대 등록이라면 -->
-    <div class>
-    <% elsif @feed_index == 2 %>
-      <% @obj = Carousel.find(feed['origin_id']) %>
-      <%= @friend_nickname %> 님이 화장대 <strong><%= @obj.name %></strong>을 등록했습니다!
-      <%= distance_of_time_in_words(@feed_time, Time.zone.now) %>
-    </div>
+        <div class="feed_picture">
+          <img src="/default/perfume.png" class="feed_content_img">
+        </div>
 
-    <!-- feed가 인생템 등록이라면 -->
-    <div class>
-    <% elsif @feed_index == 3 %>
-      <% @obj = Cosmetic.find(Best.find(feed['origin_id']).cosmetic_id) %>
-      <%= @friend_nickname %> 님이 화장품 <strong><%= @obj.name %></strong> 을 인생템으로 지정했습니다!
-      <%= distance_of_time_in_words(@feed_time, Time.zone.now) %>
-    <% end %>
-    </div>
+        <div class="feed_content">
+          <div class="feed_content_title">
+            화장품 <strong><%= @obj.name %></strong>을 등록했습니다!
+          </div>
+          <div class="feed_content_memo">
+            <%= @obj.memo %>
+          </div>
+        </div>
 
+
+      <!-- feed가 화장대 등록이라면 -->
+      <% elsif @feed_index == 2 %>
+        <% @obj = Carousel.find(feed['origin_id']) %>
+        
+        <div class="feed_profile">
+          <img src='<%= @friend.profile_img.thumb %>' class="feed_profile_img">
+          <div class="feed_profile_content">
+            <strong><%= @friend_nickname %></strong></br>
+            <%= distance_of_time_in_words(@feed_time, Time.zone.now) %>
+          </div>
+        </div>
+
+        <div class="feed_picture">
+          <img src="/default/perfume.png" class="feed_content_img">
+        </div>
+
+        <div class="feed_content">
+          화장대 <strong><%= @obj.name %></strong>을 등록했습니다!
+        </div>
+
+
+      <!-- feed가 인생템 등록이라면 -->
+      <% elsif @feed_index == 3 %>
+        <% @obj = Cosmetic.find(Best.find(feed['origin_id']).cosmetic_id) %>
+
+        <div class="feed_profile">
+          <img src='<%= @friend.profile_img.thumb %>' class="feed_profile_img">
+          <div class="feed_profile_content">
+            <%= @friend_nickname %></br>
+            <%= distance_of_time_in_words(@feed_time, Time.zone.now) %>
+          </div>
+        </div>
+
+        <div class="feed_picture">
+          <img src="/default/perfume.png" class="feed_content_img">
+        </div>
+        
+        <div class="feed_content">
+          화장품 <strong><%= @obj.name %></strong> 을 인생템으로 지정했습니다!
+        </div>
+      <% end %>
+    </div>
   <% end %>
+
 </div>
