@@ -49,17 +49,25 @@ class CosmeticsController < ApplicationController
   # POST /cosmetics
   # POST /cosmetics.json
   def create
-    @cosmetic = Cosmetic.new(cosmetic_params)
+    @cosmetic = Cosmetic.new
+    @cosmetic.name = params[:cosmetic][:name]
+    @cosmetic.memo = params[:cosmetic][:memo]
+    @cosmetic.category = params[:cosmetic][:category]
+    @cosmetic.exp_date = params[:cosmetic][:exp_date]
+    @cosmetic.user_id = params[:cosmetic][:user_id]
+    @cosmetic.cosmetic_info_id = params[:cosmetic][:cosmetic_info_id]
+    @cosmetic.carousel_id = params[:cosmetic][:carousel_id]
+    @cosmetic.save
 
-    respond_to do |format|
-      if @cosmetic.save
-        format.html { redirect_to @cosmetic, notice: 'Cosmetic was successfully created.' }
-        format.json { render :show, status: :created, location: @cosmetic }
-      else
-        format.html { render :new }
-        format.json { render json: @cosmetic.errors, status: :unprocessable_entity }
-      end
+    
+    if params[:cosmetic][:best_check] == "true"
+      @best = Best.new
+      @best.cosmetic_id = @cosmetic.id
+      @best.user_id = @cosmetic.user_id
+      @best.save
     end
+
+    redirect_to root_path
   end
 
   # PATCH/PUT /cosmetics/1
@@ -166,4 +174,5 @@ class CosmeticsController < ApplicationController
     def cosmetic_params
       params.require(:cosmetic).permit(:name, :memo, :category, :exp_date, :user_id, :cosmetic_info_id, :carousel_id)
     end
+
 end

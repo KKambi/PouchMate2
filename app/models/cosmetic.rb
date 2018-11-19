@@ -17,5 +17,5 @@ class Cosmetic < ApplicationRecord
 
 
 	# 빈 값이 DB에 들어가는 것을 방지
-	validates :name, :category, presence: true
+	validates :name, :category, :user_id, :carousel_id, presence: true
 end
