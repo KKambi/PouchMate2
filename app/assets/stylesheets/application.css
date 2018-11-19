@@ -74,12 +74,10 @@
 @media only screen and (max-width: 400px) {
 	.main_carousel {
 		height: 318px;
-		background-color: pink;
 	}
 	.main_intro {
 		height: 145px;
 		width: 90%;
-		background-color: yellow;
 		margin: 0 auto;
 		padding: 20px;
 	}
@@ -112,10 +110,35 @@
 		padding-top: 5px;
 	}
 
+	.footer_j {
+		width: 100%;
+		height : 55px;
+		display: flex;
+	    position: fixed;
+	    left: 0;
+	    bottom: 0;		
+		border: 1px solid #f0f0f0;
+	}
+	.footer_1,.footer_2,.footer_3{
+		width: 33%;
+		height: 55px;
+		background-color: #ffffff;
+	}
+	.footer_1, .footer_2{
+		border-right: 1px solid #f0f0f0;
+	}
+	.register_button{
+		bottom: 55px;
+		right: 0;
+		position: fixed;
+		margin: 10px;
+	}
+
 }
 
 /*tablet style*/
 @media only screen and (min-width: 401px) and (max-width: 960px) {
 
 }
+
 
