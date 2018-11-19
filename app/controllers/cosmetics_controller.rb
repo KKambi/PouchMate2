@@ -107,21 +107,33 @@ class CosmeticsController < ApplicationController
     namedic=Hash.new 
     countdic=Hash.new 
     temparr=[]
+    cbestarr = []
+
+    cbestarr.clear
 
     current_user.bests.all. each do |cbest|
-      temparr.clear
-      
-      Best.where(cosmetic_id: cbest.cosmetic_id).each do |temp|
-        temparr.push(temp.user_id)
+      cbestarr.push(cbest.cosmetic_id)
+    end
 
-        for i in temparr
-          if namedic.key?(i) == false
-            namedic[i] = [cbest]
-          else
-            namedic[i] += [cbest]
-          end
+    cbestarr=cbestarr.shuffle
+    
+
+    for c in cbestarr
+      temparr.clear
+
+      Best.where(cosmetic_id: c).each do |temp|
+        temparr.push(temp.user_id)
+      end #여기에 오는게 맞음
+
+      temparr=temparr.shuffle
+
+      for i in temparr
+        if namedic.key?(i) == false
+          namedic[i] = [c]
+        else
+          namedic[i] += [c]
         end
-      end  #temp 루프 끝
+      end
     end
 
     namedic.each do |key, value|
