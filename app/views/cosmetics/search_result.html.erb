@@ -26,7 +26,11 @@
 <h1> <임시 화장품 결과> </h1>
 <% @items2.each do |k| %>
   <div class='search_Btn'>
-    <%= k.name %>
+    <%= k.name %><br>
+    이 제품이 인생템인 친구들: 
+    <% Best.where(cosmetic_id: k.id).each do |beeee| %>
+    <%= User.find(beeee.user_id).nickname %>/
+    <%end%>
   </div>
 ---------------------------------
 <% end %>
@@ -62,7 +66,12 @@
     <%= link_to "친구요청 보내기", friend_requests_path(friend_id: a.id), :method => :post %>
       
     <% end %>
-	<%= link_to "친구 화장대 보기", table_cosmetic_path(user_id: a.id) %>
+    <%if current_user.id == a.id %>
+      <%= link_to "내 화장대로 가기", table_cosmetic_path(user_id: a.id) %>
+    <%else%>
+
+      <%= link_to "친구 화장대 보기", table_cosmetic_path(user_id: a.id) %>
+  <%end%>
 <%end%>
 
 

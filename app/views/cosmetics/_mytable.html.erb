@@ -77,6 +77,15 @@
     <br>
         <%= User.find(x.writer_id).nickname %>
         <%= x.content %>
+        <% if x.created_at > Time.now-1.day %>
+          <%=time_ago_in_words(x.created_at) %>  
+
+         <% elsif x.created_at <= Time.now-1.day and Time.now-3.day <= x.created_at %>
+         <%=time_ago_in_words(x.created_at) %>  
+         <%= x.created_at.strftime(" %I:%M%p")%>
+        <% else %>
+          <%= x.created_at.to_date %>  
+        <%end%>
         <%= link_to 'Destroy', comment_destroy_path(user_id: current_user.id, comment_id: x.id), method: "delete" %>
     <% end %>
     
@@ -111,3 +120,4 @@
     </div>
   <% end %>
 </div>
+

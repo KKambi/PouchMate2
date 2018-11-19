@@ -12,8 +12,9 @@
 
  <친구추천>
  <% @countdic.each do |key,value| %>
-  <% if !current_user.is_friend?(User.find(key)) and current_user.id != key %>
-    <%= User.find(key).nickname %>
+  <% if !current_user.is_friend?(User.find(key)) and current_user.id != key %>  
+    <%= User.find(key).nickname %>/
+    나랑 겹치는 인생템 갯수: <%= @countdic[key] %> <br>
   <% end %>
  <% end %> 
 
