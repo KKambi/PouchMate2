@@ -70,12 +70,12 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Memo</th>
-      <th>Category</th>
-      <th>Exp date</th>
-      <th>User</th>
-      <th>Carousel</th>
+      <th>화장품이름</th>
+      <th>메모</th>
+      <th>카테고리</th>
+      <th>사용기한</th>
+      <th>누구꺼?</th>
+      <th>화장대 이름</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -84,11 +84,11 @@
       <tr>
         <td><%= cosmetic.name %></td>
         <td><%= cosmetic.memo %></td>
-        <td><%= cosmetic.category %></td>
+        <td><%= Category.find(cosmetic.category).name %></td>
         <td><%= cosmetic.exp_date %></td>
-        <td><%= cosmetic.user_id %></td>
+        <td><%= User.find(cosmetic.user_id).nickname %></td>
         <td>
-          [이후 카로셀 DB와 연동 필요]
+          <%= Carousel.find(cosmetic.carousel_id).name %>
         </td>
         
         <td><%= link_to 'Show', cosmetic %></td>
@@ -113,7 +113,9 @@
 --------파우치 댓글-------
     <% @user.comments.each do |x| %>
     <br>
-        <%= User.find(x.writer_id).nickname %>
+        <%= link_to table_cosmetic_path(x.writer_id) do %>
+          <%= User.find(x.writer_id).nickname %>
+        <% end %>
         <%= x.content %>
 
         <% @comment_time = x.created_at %>

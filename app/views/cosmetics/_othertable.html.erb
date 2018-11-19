@@ -29,8 +29,6 @@
         </td>
         
         <td><%= link_to 'Show', cosmetic %></td>
-        <td><%= link_to 'Edit', edit_cosmetic_path(cosmetic) %></td>
-        <td><%= link_to 'Destroy', cosmetic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -41,7 +39,9 @@
 
     <% @user.comments.each do |x| %>
     <br>
-        <%= User.find(x.writer_id).nickname %>
+        <%= link_to table_cosmetic_path(x.writer_id) do %>
+          <%= User.find(x.writer_id).nickname %>
+        <% end %>
         <%= x.content %>
         
         <% @comment_time = x.created_at %>

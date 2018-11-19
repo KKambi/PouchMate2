@@ -46,20 +46,20 @@
 	  </div>
 
 	  <div class="field">
-	    <% if !current_user.carousels.blank? %>
-	      <%= form.label :'화장대 선택' %>
+      <%= form.label :'화장대 선택' %>
 
-		    <% current_user.carousels.each do |carousel| %>
-		    	<%= form.label carousel.name %>
-		      <%= form.radio_button(:carousel_id, carousel.id, :checked => true) %>
-		    <% end %>
-	    <% else %>
-	      먼저 화장대를 만들어주세요!
+	    <% current_user.carousels.each do |carousel| %>
+	    	<%= form.label carousel.name %>
+	      <%= form.radio_button(:carousel_id, carousel.id, :checked => true) %>
 	    <% end %>
-
 	  </div>
 
-	  <!-- 임시: info_id를 전달하기 위한 hidden_field -->
+	  <div class="field">
+      <%= form.radio_button(:best_check, true) %>
+      [임시]인생템 설정
+  	</div>
+
+	  <!-- 사용자가 화장품을 직접 등록할 경우, cosmetic_info_id가 1로 고정 -->
 	  <%= form.hidden_field :cosmetic_info_id, value: 1 %> 
 
 
@@ -75,9 +75,7 @@
 <% end %>
 
 
-
-
-<%= link_to 'Back', cosmetics_path %>
+<%= link_to '뒤로', root_path %>
 
 <%= javascript_include_tag('cosmetic_new') %>
 
