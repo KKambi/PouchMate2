@@ -32,6 +32,11 @@ class CosmeticsController < ApplicationController
   # GET /cosmetics/new
   def new
     @cosmetic = Cosmetic.new
+
+      gon.country = []
+      CosmeticInfo.all.each do |k|
+        gon.country.push(k.name)
+      end
   end
 
   def get_middle_categories
@@ -152,6 +157,12 @@ class CosmeticsController < ApplicationController
     @countdic=countdic.sort_by {|k,v| v}.reverse.to_h
 
 
+      gon.country = []
+      CosmeticInfo.all.each do |k|
+        gon.country.push(k.name)
+      end
+
+
 
   end
 
@@ -161,6 +172,12 @@ class CosmeticsController < ApplicationController
       @items2 = Cosmetic.where(["name LIKE ?","%#{params[:mySearch]}%"]) #임시로
       @usersearch = User.where(["nickname LIKE ?","%#{params[:mySearch]}%"])
       @uzi_search = params[:mySearch]
+
+      
+      gon.country = []
+      CosmeticInfo.all.each do |k|
+        gon.country.push(k.name)
+      end
   
   end 
 

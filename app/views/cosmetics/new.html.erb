@@ -19,7 +19,7 @@
 
 	  <div class="field">
 	    <%= form.label :'이름' %>
-	    <%= form.text_field :name, :required => true %>
+	    <%= form.text_field :myInput, :required => true %>
 	  </div>
 
 	  <div class="field">
@@ -78,4 +78,20 @@
 <%= link_to '뒤로', root_path %>
 
 <%= javascript_include_tag('cosmetic_new') %>
+
+<!-- 검색 자바 http://easyautocomplete.com/guide -->
+<script type="text/javascript">
+
+var options = {
+  data: gon.country,
+  list: {
+    match: {
+      enabled: true
+    }
+  }
+};
+
+$("#cosmetic_myInput").easyAutocomplete(options);
+
+</script>
 

@@ -79,3 +79,6 @@ gem 'ancestry'
 
 # 디바이스 메세지 한글 번역
 gem 'devise-i18n'
+
+# 컨트롤러 변수를 자바스크립트에서 사용 가능
+gem 'gon'
