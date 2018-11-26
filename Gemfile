@@ -89,4 +89,3 @@ gem 'gon'
 gem 'coffee-script-source', '1.8.0'
 gem 'execjs', '1.2.4'
 gem 'mini_racer'
-

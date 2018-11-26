@@ -12,10 +12,8 @@
     <%= stylesheet_link_tag  'easy-autocomplete.min.css', media: "all" %>
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
     <%= javascript_include_tag 'jquery.easy-autocomplete.min.js' %>
-
-    <%= include_gon %>
-
 
     <%= include_gon %>
 
@@ -25,11 +23,20 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-   
-  </head>
 
+  
+    <!-- 노토산스 폰트 적용 -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR" rel="stylesheet">
+
+  </head>
+  <style>
+    .carousel-control-next, .carousel-control-prev {
+      width: 5%;
+    }
+  </style>
   <body>
-    <div class='stickyheader' style="width:375px; height:55px; border-bottom: 1px solid;">PouchMate</div>
+
+
     <!-- 임시 알림 드롭다운 다은 -->
   <div class="dropdown" data-behavior='notifications'>
     <div class="dropdown2" data-behavior='notifications-link'>
@@ -37,7 +44,15 @@
      <div class="dropdown-content" data-behavior="dropdown-item">
       </div>
   </div>
+
+  <div class='stickyheader'>
+    <div class='title'>
+      <img src='/pouchmate_pilgi.png' style='height:20px'>
     </div>
+    <div class='notification'>
+      <img src='/notification.png' style='height:20px'>        
+    </div>
+  </div>
 
     <%= yield %>
 
@@ -48,7 +63,19 @@
     <% end %>
   </div>
 
-
+  <div class='register_button'>
+    <%= link_to(image_tag("/plus64.png"), new_cosmetic_path) %>
+  </div>
+  <div class="footer_j">
+<!-- group_icon_purple.png
+user_purple.png
+search_purple.png -->
+    <div class="footer_1">
+      <img src='/group_icon.png' class='footericon'></div>
+    <div class="footer_2">
+      <img src='/search.png' class='footericon'></div>
+    <div class="footer_3"><img src='/user_.png'class='footericon'></div>
+  </div>
 
     <!--한비_Footer에 들어갈 링크-->
     <div style="margin-top: 30px; margin-bottom: 30px; color:red;">
@@ -76,10 +103,10 @@
       <% end %>
 
       </div>
-    </div>
-    
+    </div>   
 
   </body>
+
 </html>
 
 
