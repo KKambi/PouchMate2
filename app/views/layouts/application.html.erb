@@ -8,8 +8,12 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag  'easy-autocomplete.min.css', media: "all" %>
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'jquery.easy-autocomplete.min.js' %>
+
+    <%= include_gon %>
 
     <!-- w3school carousel -->
     <meta charset="utf-8">
