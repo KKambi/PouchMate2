@@ -17,6 +17,8 @@ class CosmeticsController < ApplicationController
   def table
     @curr_time = Time.zone.now
 
+    @carousels = Carousel.where("user_id" => current_user.id)
+
     @user_id = params[:user_id]
     if @user_id.nil? || @user_id == current_user.id
       @user = current_user

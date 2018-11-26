@@ -3,17 +3,18 @@
   <head>
     <title>PouchMate2</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-     <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-     
 
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %> 
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag  'easy-autocomplete.min.css', media: "all" %>
-   
-    
+
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'jquery.easy-autocomplete.min.js' %>
+
+    <%= include_gon %>
 
 
     <%= include_gon %>
