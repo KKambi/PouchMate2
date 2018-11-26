@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-
-
   # 유저 라우팅
   devise_for :users
 

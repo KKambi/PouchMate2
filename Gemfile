@@ -79,3 +79,5 @@ gem 'ancestry'
 
 # 디바이스 메세지 한글 번역
 gem 'devise-i18n'
+
+gem 'gon'
