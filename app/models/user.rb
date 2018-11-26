@@ -35,6 +35,9 @@ class User < ApplicationRecord
   # 닉네임, 이름 넣지 않으면 DB에 저장X
   validates :nickname, :age, :gender, presence: true
 
+  # 알림 기능 
+  has_many :notifications, foreign_key: :recipient_id
+
   # remove_friend는 User 클래스의 메소드이고, argument로 friend객체(=User객체)를 받는다.
   def remove_friend(friend)
     self.friends.destroy(friend)
