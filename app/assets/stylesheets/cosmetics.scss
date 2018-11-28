@@ -4,7 +4,7 @@
 
 * { box-sizing: border-box; }
 body {
-  font: 16px Arial; 
+  font: 14px Arial; 
 }
 .autocomplete {
   /*the container must be positioned relative:*/
@@ -22,8 +22,10 @@ input[type=text] {
   width: 100%;
 }
 input[type=submit] {
-  background-color: DodgerBlue;
+  background-color: #643480;
   color: #fff;
+  font-size: 10px;
+
 }
 .autocomplete-items {
   position: absolute;
