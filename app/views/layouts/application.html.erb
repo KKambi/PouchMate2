@@ -5,6 +5,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet"> 
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -40,6 +42,7 @@
   <body>
 
 
+
     <!-- 임시 알림 드롭다운 다은 -->
   <div class="dropdown" data-behavior='notifications'>
     <div class="dropdown2" data-behavior='notifications-link'>
@@ -59,12 +62,10 @@
 
     <%= yield %>
 
-  <div style="margin: 30px 0;">
     <% if user_signed_in? %>
       <%= current_user.email %>
       <%= link_to "로그아웃", destroy_user_session_path, method: :delete %>
     <% end %>
-  </div>
 
   <div class='register_button'>
     <%= link_to(image_tag("/plus64.png"), new_cosmetic_path) %>
@@ -81,10 +82,9 @@ search_purple.png -->
   </div>
 
     <!--한비_Footer에 들어갈 링크-->
-    <div style="margin-top: 30px; margin-bottom: 30px; color:red;">
+    <div class="footer" style="display:flex; flex-direction: column;">
       [임시]한비_Footer링크
-      
-      <div class="footer" style="display:flex; flex-direction: column;">
+        
       <%= link_to root_path do %>
         1. 홈(마이페이지)
       <% end %>
@@ -105,8 +105,10 @@ search_purple.png -->
         5. 검색
       <% end %>
 
+
       </div>
     </div>   
+
 
   </body>
 

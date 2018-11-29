@@ -15,5 +15,8 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 Rails.application.config.assets.precompile += %w( cosmetic_new.js )
 Rails.application.config.assets.precompile += %w( easy-autocomplete.min.css )
 
+
+
 Rails.application.config.assets.precompile += %w( jquery.easy-autocomplete.min.js )
+
 

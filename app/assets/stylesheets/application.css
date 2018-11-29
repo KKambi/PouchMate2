@@ -14,9 +14,12 @@
  *= require_self
  */
 
+
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
 * {
-	font-family: 'Noto Sans KR', sans-serif
-}
+	font-family: "Noto Sans KR", sans-serif;
+ }
 
 .feed {
   background-color: #FFFFFF;
@@ -28,7 +31,7 @@
 
 .feed_page {
 	background-color: #F2EEF5;
-	padding: 20px 20px 20px 20px;
+	padding: 20px 0px 20px 0px;
 }
 
 .feed_page_title {
@@ -71,6 +74,8 @@
   width: 120px;
   height: 120px;
 }
+
+
 
 /*mobile style*/
 @media only screen and (max-width: 400px) {
@@ -344,5 +349,6 @@
 	border-radius: 15px;
 	font-size: 8px;
 }
+
 
 
