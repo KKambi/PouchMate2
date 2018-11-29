@@ -40,12 +40,14 @@
 
 
 
-    <!-- 임시 알림 드롭다운 다은 -->
+  <!-- 임시 알림 드롭다운 다은 -->
   <div class="dropdown" data-behavior='notifications'>
     <div class="dropdown2" data-behavior='notifications-link'>
-    <span>알림</span> <span data-behavior="unread-count"></span>
-     <div class="dropdown-content" data-behavior="dropdown-item">
+      <span>알림</span> 
+      <span data-behavior="unread-count"></span>
+      <div class="dropdown-content" data-behavior="dropdown-item">
       </div>
+    </div>
   </div>
 
   <div class='stickyheader'>
@@ -59,10 +61,7 @@
 
     <%= yield %>
 
-    <% if user_signed_in? %>
-      <%= current_user.email %>
-      <%= link_to "로그아웃", destroy_user_session_path, method: :delete %>
-    <% end %>
+  <%= link_to '로그아웃', destroy_user_session_path, method: :delete %>
 
   <div class='register_button'>
     <%= link_to(image_tag("/plus64.png"), new_cosmetic_path) %>
@@ -72,39 +71,22 @@
 user_purple.png
 search_purple.png -->
     <div class="footer_1">
-      <img src='/group_icon.png' class='footericon'></div>
-    <div class="footer_2">
-      <img src='/search.png' class='footericon'></div>
-    <div class="footer_3"><img src='/user_.png'class='footericon'></div>
-  </div>
-
-    <!--한비_Footer에 들어갈 링크-->
-    <div class="footer" style="display:flex; flex-direction: column;">
-      [임시]한비_Footer링크
-        
-      <%= link_to root_path do %>
-        1. 홈(마이페이지)
-      <% end %>
-
-      <%= link_to search_cosmetics_path do %>
-        2. 추천(검색)
-      <% end %> 
-      
-      <%= link_to friends_index_path do %>
-        3. 친구관리로 이동하기
-      <% end %>
-
       <%= link_to feed_cosmetics_path do %>
-        4. 피드
+      <img src='/group_icon.png' class='footericon'>
       <% end %>
-
+    </div>
+    <div class="footer_2">
       <%= link_to search_cosmetics_path do %>
-        5. 검색
+        <img src='/search.png' class='footericon'>
       <% end %>
-
-
-      </div>
-    </div>   
+    </div>
+    <div class="footer_3">
+      <%= link_to root_path do %>
+        <img src='/user_.png'class='footericon'>
+      <% end %>
+    </div>
+  </div>
+  
 
 
   </body>

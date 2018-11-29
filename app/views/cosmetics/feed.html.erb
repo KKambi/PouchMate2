@@ -1,6 +1,6 @@
 <div class="feed_page">
   <div class="feed_page_title">
-    [폰트지정] 친구의 피드!
+    친구의 소식
   </div>
 
   <% @feeds.each do |feed| %>
@@ -37,7 +37,7 @@
 
         <div class="feed_content">
           <div class="feed_content_title">
-            화장품 <strong><%= @obj.name %></strong>을 등록했습니다!
+            화장품 <strong><%= @obj.name %></strong>을 등록했습니다
           </div>
           <div class="feed_content_memo">
             <%= @obj.memo %>
@@ -70,7 +70,7 @@
         </div>
 
         <div class="feed_content">
-          화장대 <strong><%= @obj.name %></strong>을 등록했습니다!
+          화장대 <strong><%= @obj.name %></strong>을 등록했습니다
         </div>
 
 
@@ -99,7 +99,7 @@
         </div>
         
         <div class="feed_content">
-          화장품 <strong><%= @obj.name %></strong> 을 인생템으로 지정했습니다!
+          화장품 <strong><%= @obj.name %></strong> 을 인생템으로 지정했습니다
         </div>
       <% end %>
     </div>
