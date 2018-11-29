@@ -64,8 +64,10 @@
 
     <%= yield %>
 
+  <div class="log-out">
   <%= link_to '로그아웃', destroy_user_session_path, method: :delete %>
-
+  </div>
+  
   <div class='register_button'>
     <%= link_to(image_tag("/plus64.png"), new_cosmetic_path) %>
   </div>
