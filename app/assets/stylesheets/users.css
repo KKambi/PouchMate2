@@ -1,0 +1,100 @@
+/* input box color */ 
+input:-webkit-autofill { 
+	-webkit-box-shadow: 0 0 0 30px #fff inset;
+	-webkit-text-fill-color: #000; 
+} 
+
+input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active { 
+	transition: background-color 5000s ease-in-out 0s;
+}
+
+#title, #sign_up {
+	font-size: 1.5em;
+	margin-bottom: 0.5em;
+}
+
+.wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+#sign_up_button {
+	background-color: transparent;
+	color: rgba(255, 255, 255, 0.7);
+	font-size: 0.9em;
+}
+
+#sign_up_button:hover{
+	text-decoration: none;
+	background-color: transparent;
+	color: rgba(107, 61, 134, 1);
+	font-size: 0.9em;
+}
+
+#new_user {
+	text-align: center;
+}
+
+.session_new {
+	display: flex;
+	flex-direction: column;
+	width: 250px;
+	height: 200px;
+	margin: 0 auto;
+}
+
+.sign_up_new {
+	width: 250px;
+}
+
+.id_pw input, .sign_up_new input {
+	height: auto;
+	width: 100%;
+	padding: 0.5em 0.5em;
+	line-height: normal;
+	border-width: 0 0 1.5px 0;
+	border-color: white;
+	background-color: transparent;
+}
+
+.sign_up_new .field {
+	margin-bottom: 0.5em;
+}
+
+.id_pw input::placeholder, .sign_up_new input::placeholder{
+	color: white;
+	opacity: 0.7;
+}
+
+.login_button_div {
+	height: auto;
+	margin-top: 10px;
+	padding: 2px;
+	text-align: center;
+}
+
+#login_button, #sign_up_submit {
+	padding: 2px;
+	height: 100%;
+	width: 90%;
+	font-size: 1.5em;
+	color: rgba(107, 61, 134, 1);
+	border-width: 0px;
+	border-radius: 30px;
+	background-color: white;
+	background-color: rgba(255, 255, 255, 0.8);
+}
+
+#login_button:hover, #sign_up_submit:hover {
+	cursor: pointer;
+}
+
+#gender_label {
+	white-space:nowrap;
+}
+
+#gender_radio {
+	white-space:normal;
+}
