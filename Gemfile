@@ -81,4 +81,11 @@ gem 'ancestry'
 gem 'devise-i18n'
 
 # 컨트롤러 변수를 자바스크립트에서 사용 가능
+
 gem 'gon'
+
+#알림 젬
+
+gem 'coffee-script-source', '1.8.0'
+gem 'execjs', '1.2.4'
+gem 'mini_racer'

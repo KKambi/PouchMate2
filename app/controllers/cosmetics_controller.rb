@@ -106,8 +106,14 @@ class CosmeticsController < ApplicationController
         @commentnew.content = params[:content]
         @commentnew.writer_id = current_user.id
         @commentnew.user_id = params[:user_id]
-        @commentnew.save
-        
+        if @commentnew.save
+
+          #Create the notifications
+          @joouser = User.find(params[:user_id])
+          if @joouser != current_user
+            Notification.create(recipient: @joouser, actor: current_user, action: "posted", notifiable: @commentnew)
+          end
+        end
         redirect_back(fallback_location: root_path)
         
   end

@@ -1,11 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<script type="text/javascript" src="//code.jquery.com/jquery-2.0.2.js"></script>
+<script type="text/javascript" src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
 <style>
+  .draggable {
+      width: 50px;
+      height: 50px;
+      padding: 0.5em;
+      float: left;
+      cursor:move;
+      background-color: pink;
+  }
+  .draggable, a {
+      cursor:move;
+  }
+  #draggable, #draggable2 {
+      margin-bottom:20px;
+      cursor:move;
+  }
+  #draggable {
+      cursor: move;
+  }
+  #draggable2 {
+      cursor: e-resize;
+  }
+  #containment-wrapper {
+      width: 300px;
+      height: 300px;
+      border:2px solid #ccc;
+  }
+  h3 {
+      clear: left;
+  }
   /* Make the image fully responsive */
   .carousel-inner img {
       width: 100%;
       height: 318px;
   }  
 </style>
-<div class="main_carousel">
+
+</head>
+
+<body>
+
+<div class="main_carousel" style='margin-top: 55px'>
   <div id="demo" class="carousel slide" data-ride="carousel">
 
     <!-- Indicators -->
@@ -13,13 +54,20 @@
       <li data-target="#demo" data-slide-to="0" class="active"></li>
       <li data-target="#demo" data-slide-to="1"></li>
       <li data-target="#demo" data-slide-to="2"></li>
+      <a href=''><li data-target="#demo" data-slide-to="3"></li></a>
     </ul>
     
     <!-- The slideshow -->
+
     <% @first = @carousels.first %>
     <% @carousels.each do |carousel| %>
       <% if carousel == @first %>
-        <div class="carousel-item active">
+        <div class="carousel-item active" id="containment-wrapper">
+          <% @cosmetics.each do |cosmetic| %>
+            <div id="draggable" class='ui-widget-content draggable'>
+              <a href=''><%= cosmetic.name %></a>
+            </div>
+          <% end %> 
           <img src="<%= CarouselBackground.find(carousel.carousel_background_id).img_address %>" >
         </div>
       <% else %>
@@ -28,7 +76,6 @@
         </div>
       <% end %>
     <% end %>
-
     
     <!-- Left and right controls -->
     <a class="carousel-control-prev" href="#demo" data-slide="prev">
@@ -40,7 +87,6 @@
   </div>
 </div>  
 
-</div>
 <div class="main_intro">
   <div class="intro_top">
     <div class="intro_face"><img src='/naeun.png' style='width: 60px; height: 60px; border-radius: 50%;'></div>
@@ -62,10 +108,30 @@
     <div class="intro_bottom_name">이재인</div>
     <div class="intro_bottom_lineintro">안녕다들만나서반가워</div>
   </div>
+</div>
+
+<div class="main_vanity">
+  <div class='vanity v1'>Lips</div>
+  <div class='vanity v2'>Eyes</div>
+  <div class='vanity v3'>Etude</div>
+  <div class='vanity v4'>Favorites</div>
+  <div class='vanity plus-btn'>추가</div>
+</div>
+<div class="main_lifeitem">
+  <div class='main_lifeitem_title'>인생템</div>
+  <div class='flex_lifeitem'>
+    <div class='lifeitem l1'>
+      <img src='/lushcosmetic.png' class='lifeitem_img'>
+    </div>
+    <div class='lifeitem l2'>
+      <img src='/maclipstain.png' class='lifeitem_img'>
+    </div>
+    <div class='lifeitem l3'></div>
+    <div class='lifeitem l4'></div>
+    <div class='lifeitem l5'></div>    
+  </div>
 
 </div>
-<div class="main_vanity"></div>
-<div class="main_lifeitem"></div>
 <div class='main_comment'></div>
 <div class='main_cosmeticlist'></div>
 
@@ -164,12 +230,25 @@
   <% end %>
 </div>
 
+<script>
+var positions = JSON.parse(localStorage.positions || "{}");
+$(function () {
+    var d = $("[id=draggable]").attr("id", function (i) {
+        return "draggable_" + i
+    })
+    $.each(positions, function (id, pos) {
+        $("#" + id).css(pos)
+    })
 
-<div class='register_button'>
-  <%= link_to(image_tag("/plus64.png"), new_cosmetic_path) %>
-</div>
-<div class="footer_j">
-  <div class="footer_1"></div>
-  <div class="footer_2"></div>
-  <div class="footer_3"></div>
-</div>
+    d.draggable({
+        containment: "#containment-wrapper",
+        scroll: false,
+        stop: function (event, ui) {
+            positions[this.id] = ui.position
+            localStorage.positions = JSON.stringify(positions)
+        }
+    });
+});
+</script>
+</body>
+</html>

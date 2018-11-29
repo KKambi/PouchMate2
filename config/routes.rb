@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-
-
   # 유저 라우팅
   devise_for :users
 
@@ -27,6 +25,12 @@ Rails.application.routes.draw do
 
 
 
+  # 알림 라우팅 
+  resources :notifications do
+    collection do
+      post :mark_as_read
+    end
+  end
 
 
 

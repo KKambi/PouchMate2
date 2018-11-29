@@ -3,6 +3,7 @@
   <head>
     <title>PouchMate2</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet"> 
 
@@ -13,6 +14,7 @@
     <%= stylesheet_link_tag  'easy-autocomplete.min.css', media: "all" %>
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
     <%= javascript_include_tag 'jquery.easy-autocomplete.min.js' %>
 
     <%= include_gon %>
@@ -23,12 +25,38 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-  </head>
 
+  
+    <!-- 노토산스 폰트 적용 -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR" rel="stylesheet">
+
+  </head>
+  <style>
+    .carousel-control-next, .carousel-control-prev {
+      width: 5%;
+    }
+  </style>
   <body>
-    <div class='stickyheader' style="width:375px; height:55px; border-bottom: 1px solid;">
-      PouchMate
+
+
+
+    <!-- 임시 알림 드롭다운 다은 -->
+  <div class="dropdown" data-behavior='notifications'>
+    <div class="dropdown2" data-behavior='notifications-link'>
+    <span>알림</span> <span data-behavior="unread-count"></span>
+     <div class="dropdown-content" data-behavior="dropdown-item">
+      </div>
+  </div>
+
+  <div class='stickyheader'>
+    <div class='title'>
+      <img src='/pouchmate_pilgi.png' style='height:20px'>
     </div>
+    <div class='notification'>
+      <img src='/notification.png' style='height:20px'>        
+    </div>
+  </div>
+
     <%= yield %>
 
     <% if user_signed_in? %>
@@ -36,7 +64,19 @@
       <%= link_to "로그아웃", destroy_user_session_path, method: :delete %>
     <% end %>
 
-
+  <div class='register_button'>
+    <%= link_to(image_tag("/plus64.png"), new_cosmetic_path) %>
+  </div>
+  <div class="footer_j">
+<!-- group_icon_purple.png
+user_purple.png
+search_purple.png -->
+    <div class="footer_1">
+      <img src='/group_icon.png' class='footericon'></div>
+    <div class="footer_2">
+      <img src='/search.png' class='footericon'></div>
+    <div class="footer_3"><img src='/user_.png'class='footericon'></div>
+  </div>
 
     <!--한비_Footer에 들어갈 링크-->
     <div class="footer" style="display:flex; flex-direction: column;">
@@ -61,7 +101,37 @@
       <%= link_to search_cosmetics_path do %>
         5. 검색
       <% end %>
-    </div>
+
+
+      </div>
+    </div>   
+
 
   </body>
+
 </html>
+
+
+
+<!-- 임시 알림 css
+ -->
+ <style>
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+</style>
