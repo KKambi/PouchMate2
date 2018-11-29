@@ -22,7 +22,7 @@
  }
 
 .feed {
-	background-color: #FFFFFF;
+  background-color: #FFFFFF;
   padding: 16px;
   margin: 16px;
   border-radius: 3%;
@@ -84,7 +84,7 @@
 	}
 	.main_intro {
 		height: 145px;
-		width: 80%;
+		width: 280px;
 		margin: 0 auto;
 		padding: 20px;
 	}
@@ -140,9 +140,11 @@
 		font-size: 10px;
 		color: #A6A6A6;
 		border: 1px solid #F7F7F7;
+    	background-repeat:no-repeat;
+   		background-size:100% 100%;		
 	}
 	.v1{
-		background-image: url("/vanity2.png")
+		background-image: url("/vanity2.png");
 	}
 	.v2{
 		background-image: url("/vanity1.png")
@@ -162,14 +164,16 @@
 		font-size: 14px;
 		font-weight: bold;
 		width: 100%;
-		text-align: center;
+		padding-left: 165px;
 	}
 	.flex_lifeitem{
 		display: flex;
-		justify-content: space-around;
 		align-items: center;
+  		flex-wrap: nowrap;
+  		overflow-x: auto;		
 	}
 	.lifeitem{
+		flex: 0 0 auto;
 		border-radius: 50%;
   		width: 60px;
   		height: 60px;
@@ -179,6 +183,13 @@
   		display: flex;
   		align-items: center;
   		justify-content: space-around;
+		-webkit-overflow-scrolling: touch;
+		&::-webkit-scrollbar {
+		  display: none;
+		}
+	}
+	.l1{
+		margin-left: 20px;
 	}
 	.lifeitem_img{
 		height: 45px;
@@ -187,11 +198,97 @@
   		filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.41));
 
 	}
+	.main_comment{
+		margin-left: 32px;
+		margin-right: 32px;
+		margin-top: 35px;
+	}
+	.main_comment_title, .main_cosmeticlist{
+		font-size: 14px;
+		color: #643480;
+		font-weight: 900;
+    	margin-bottom: 15px;
+	}
+	.face_30{
+		width: 30px;
+		height: 30px;
+		border-radius: 50%;
+	}
+	.main_comment_flexbox{
+		display: flex;
+    	margin-bottom: 16px;		
+	}
+	.comment_face{
+		margin-right: 8px;
+	}
+	.comment_top{
+		display: flex;
+		font-size: 10px;
+	}
+	.comment_id{
+		margin-right: 9px;
+		font-weight: 900;
+	}
+	.comment_id, .comment_real_content{
+		color: #999999;
+	}
+	.comment_when{
+		color: #DBDBDB;
+	}
+	.comment_real_content{
+		font-weight: 500;
+		font-size: 12px;
+	}
+	.see_more{
+		text-align: right;
+		font-size: 10px;
+		color: #999999
+	}
+	.comment_temp{
+		display: flex;
+		height: 35px;
+		border-radius: 5px;
+	}
+
+	.main_cosmeticlist{
+		margin-left: 32px;
+	}
+
+	.main_cosmeticlist_card{
+		width: 343px;
+  		border-radius: 5px;
+  		box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.04);
+  		background-color: #fcfcfc;
+  		margin: auto;
+  		padding: 16px;
+	}
+	.card_top {
+		font-size: 10px;
+		color: #989898
+	}
+	.card_mid {
+		font-size: 10px;
+		color: red;
+	}
+	.cosmetic_picture{
+		display: block;
+		height: 120px;
+    	margin-left: auto;
+    	margin-right: auto;
+	}
+	.cosmetic_name{
+		text-align: center;
+		color: #989898;
+		font-size: 14px;
+	}
+	.cosmetic_review{
+		font-size: 14px;
+		color: #666666;
+	}
 }
 
 /*tablet style*/
 @media only screen and (min-width: 401px) and (max-width: 960px) {
-
 }
 
 
@@ -238,6 +335,20 @@
 		position: fixed;
 		margin: 10px;
 	}
+
+.carousel_background_image{
+	width: 100%;
+    height: 318px;
+    object-fit: cover;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+  	box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.04);
+}
+
+.button_jane{
+	border-radius: 15px;
+	font-size: 8px;
+}
 
 
 
